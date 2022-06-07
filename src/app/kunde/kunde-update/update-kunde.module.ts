@@ -21,14 +21,14 @@ import { Title } from '@angular/platform-browser';
 import { UpdateFamilienstandComponent } from './update-familienstand.component';
 import { UpdateGeschlechtComponent } from './update-geschlecht.component';
 import { UpdateInteressenModule } from './update-interessen.module';
-import { UpdateKundeComponent } from './update-kunde.component';
+// import { UpdateKundeComponent } from './update-kunde.component';
 
 @NgModule({
     imports: [SharedModule, UpdateInteressenModule],
     declarations: [
         UpdateFamilienstandComponent,
         UpdateGeschlechtComponent,
-        UpdateKundeComponent,
+        // UpdateKundeComponent,
     ],
     providers: [Title],
 })

@@ -37,6 +37,12 @@ export class UpdateInteressenComponent implements OnInit {
 
     interessen!: FormControl;
 
+    onUpdate() {
+        if (this.updateForm.pristine) {
+            log.debug('UpdateInteressenComponent.onUpdate: keine Aenderungen');
+        }
+    }
+
     ngOnInit() {
         log.debug(
             'UpadateKundeInteressen.ngOnInit: currentValue=',
