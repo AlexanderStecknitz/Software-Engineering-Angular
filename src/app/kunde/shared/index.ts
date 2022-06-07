@@ -14,3 +14,4 @@ export {
     type KundenServer,
     type Suchkriterien,
 } from './kundeRead.service';
+export { KundeWriteService } from './kundeWrite.service';
