@@ -31,13 +31,13 @@ const routes: Routes = [
         component: HomeComponent,
     },
     {
-        path: 'kunde',
+        path: 'buecher',
         // Lazy Loading (statt Eager Loading) durch dynamische Imports (seit ES 2020)
         // loadChildren statt component wie bei '/'
         // zzgl. Preloading von sichtbaren Links (s.u.)
         // https://angular.io/guide/lazy-loading-ngmodules
         loadChildren: () =>
-            import('./kunde/kunde-routing.module').then(m => m.KundeRoutingModule),
+            import('./buch/buch-routing.module').then(m => m.BuchRoutingModule),
     },
 ];
 
