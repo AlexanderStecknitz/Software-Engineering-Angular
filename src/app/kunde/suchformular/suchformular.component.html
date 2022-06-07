@@ -1,0 +1,57 @@
+<!--
+    Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<section [@fadeIn]="'in'">
+  <span class="fw-bold" style="font-size: 18px">
+    Eingabe der Suchkriterien
+  </span>
+  <div>Spezifizieren Sie z.B. Nachname, Familienstand,</div>
+  <div>Geschlecht oder Interessen</div>
+  <!--
+      Bootstrap:
+          (xs):    -  480px ("extra small")
+          sm:      -  767px ("small")
+          md:  768 -  991px ("medium")
+          lg:  992 - 1199px ("large")
+          xl: 1200 px       ("extra large")
+      CSS-Klassen von Bootstrap:
+          card-..., form-..., row, btn, bg-primary, ...
+          https://v5.getbootstrap.com/docs/5.0/forms
+    -->
+
+  <!--
+      Formulare zur Interaktion mit dem Endbenutzer:
+      * Daten werden modifiziert, z.B. in Suchfelder oder
+        Erfassungs-/Aenderungsformularen
+      * Aenderungen wirken sich auf Teile der Seite aus:
+        Ergebnisse/Fehler anzeigen, Navigationsmoeglichkeiten
+      * Eingaben werden validiert
+
+      Template-Syntax:, z.B. (submit)="onFind()" fuer Output (= Event Binding)
+      d.h. Angular registriert einen "DOM Event Listener" fuer das Ereignis
+      "submit" und ruft die Methode onFind() der Komponentenklasse,
+      wenn das Ereignis eintritt.
+
+      Definition von Attributnamen gemaess HTML: Attribute names must
+      consist of one or more characters other than the space characters,
+      U+0000 NULL, """, "'", ">", "/", "=", the control characters,
+      and any characters that are not defined by Unicode.
+    -->
+
+  <form (submit)="onSubmit()" role="form">
+    <hs-suche-nachname (nachname$)="setNachname($event)"></hs-suche-nachname>
+  </form>
+</section>

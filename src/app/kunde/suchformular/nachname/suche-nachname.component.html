@@ -1,0 +1,17 @@
+<div class="row">
+  <label for="nachnameInput" class="col col-2 col-form-label gy-3">
+    Nachname des Kunden
+  </label>
+
+  <div class="col col-10 gy-3">
+    <mat-form-field class="col col-3 me-2" appearance="fill">
+      <input
+        matInput
+        placeholder="Nachname"
+        [(ngModel)]="nachname"
+        autocomplete="off"
+        (blur)="onBlur()"
+      />
+    </mat-form-field>
+  </div>
+</div>

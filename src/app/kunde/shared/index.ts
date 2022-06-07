@@ -1,6 +1,5 @@
 // Todo Find out why you have to move exports to fix a "module has no exports" error.
 
-export { KundeWriteService } from './kundeWrite.service';
 export { FindError, SaveError, UpdateError, RemoveError } from './errors';
 export {
     type Kunde,
