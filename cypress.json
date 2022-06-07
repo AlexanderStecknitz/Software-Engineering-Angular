@@ -1,0 +1,7 @@
+{
+    "baseUrl": "https://localhost:4200",
+    "viewportWidth": 1200,
+    "viewportHeight": 800,
+    "videoCompression": false,
+    "testFiles": ["*.spec.js"]
+}
