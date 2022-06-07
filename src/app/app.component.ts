@@ -100,6 +100,7 @@ import log from 'loglevel';
     // http://w3c.github.io/webcomponents/spec/shadow
     // https://github.com/angular/angular/issues/2529
     templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
 
     // ViewEncapsulation:
     // Emulated (= default): Shadow DOM wird emuliert (hier: Shadow DOM v0),

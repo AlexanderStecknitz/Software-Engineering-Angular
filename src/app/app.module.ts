@@ -25,6 +25,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HomeModule } from './home/home.module';
 import { HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from './layout/layout.module';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { SharedModule } from './shared/shared.module';
 import { appInitializer } from './app.initializer';
@@ -58,6 +59,7 @@ import { environment } from '../environments/environment';
         HomeModule,
         HttpClientModule,
         LayoutModule,
+        MatSidenavModule,
         SharedModule,
         // NICHT BuchModule wegen Lazy Loading
     ],

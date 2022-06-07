@@ -1,3 +1,5 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable import/no-unresolved */
 /*
  * Copyright (C) 2016 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
@@ -16,9 +18,11 @@
  */
 
 import { FooterComponent } from './footer.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { NgModule } from '@angular/core';
 
 @NgModule({
+    imports: [MatSidenavModule],
     declarations: [FooterComponent],
     exports: [FooterComponent],
 })
