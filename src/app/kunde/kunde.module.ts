@@ -16,9 +16,10 @@
  */
 
 // import { DetailsKundeModule } from './details-kunde/details-kunde.module';
+import { CreateKundeModule } from './create-kunde/create-kunde.module';
 import { NgModule } from '@angular/core';
 import { SucheKundeModule } from './suche-kunde/suche-kunde.module';
 // import { UpdateKundeModule } from './update-kunde/update-kunde.module';
 
-@NgModule({ imports: [SucheKundeModule] })
+@NgModule({ imports: [CreateKundeModule, SucheKundeModule] })
 export class KundeModule {}
