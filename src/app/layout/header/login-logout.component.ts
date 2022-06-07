@@ -30,6 +30,7 @@ import log from 'loglevel';
 })
 export class LoginLogoutComponent implements OnInit {
     username: string | undefined;
+
     password: string | undefined;
 
     // Observable.subscribe() aus RxJS liefert ein Subscription Objekt,
@@ -40,7 +41,10 @@ export class LoginLogoutComponent implements OnInit {
     // Funktion als Funktionsargument, d.h. Code als Daten uebergeben
     // Suffix "$" wird als "Finnish Notation" bezeichnet https://medium.com/@benlesh/observables-and-finnish-notation-df8356ed1c9b
     isLoggedIn$!: Subject<boolean>;
+
     init!: boolean;
+
+    hide = true;
 
     constructor(
         private readonly authService: AuthService,

@@ -1,3 +1,5 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable import/no-unresolved */
 /*
  * Copyright (C) 2016 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
@@ -18,12 +20,28 @@
 import { HeaderComponent } from './header.component';
 import { LoginLogoutComponent } from './login-logout.component';
 import { LogoComponent } from './logo.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { NavComponent } from './nav.component';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
-    imports: [SharedModule],
+    imports: [
+        MatButtonModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatInputModule,
+        MatListModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        SharedModule,
+    ],
     declarations: [
         HeaderComponent,
         LoginLogoutComponent,
