@@ -1,12 +1,10 @@
 <mat-form-field appearance="outline" class="geschlechtTypeSelector">
-    <mat-label>Geschlecht</mat-label>
-    <mat-select
-          [(ngModel)]="geschlechtType"
-          (selectionChange)="onChange($event)"
-        >
-          <mat-option value="M">Männlich</mat-option>
-          <mat-option value="W">Weiblich</mat-option>
-          <mat-option value="D">Divers</mat-option>
-    </mat-select>
-    <mat-hint>Bitte Geschlecht auswählen</mat-hint>
-  </mat-form-field>
+  <mat-label>Geschlecht</mat-label>
+  <mat-select [(ngModel)]="geschlechtType" (selectionChange)="onChange($event)">
+    <mat-option value=""></mat-option>
+    <mat-option value="M">Männlich</mat-option>
+    <mat-option value="W">Weiblich</mat-option>
+    <mat-option value="D">Divers</mat-option>
+  </mat-select>
+  <mat-hint>Bitte Geschlecht auswählen</mat-hint>
+</mat-form-field>
