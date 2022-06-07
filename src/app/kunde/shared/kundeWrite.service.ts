@@ -60,17 +60,17 @@ export class KundeWriteService {
      * @return void
      */
     constructor(private readonly httpClient: HttpClient) {
-        log.debug('BuchWriteService.constructor: baseUrl=', this.#baseUrl);
+        log.debug('KundeWriteService.constructor: baseUrl=', this.#baseUrl);
     }
 
     /**
-     * Ein neues Buch anlegen
-     * @param neuerKunde Das JSON-Objekt mit dem neuen Buch
+     * Ein neues Kunde anlegen
+     * @param neuerKunde Das JSON-Objekt mit dem neuen Kunde
      */
     save(kunde: Kunde): Observable<SaveError | string> {
-        log.debug('BuchWriteService.save: buch=', kunde);
+        log.debug('KundeWriteService.save: kunde=', kunde);
         kunde.geburtsdatum = Temporal.Now.plainDateISO();
-        log.debug('BuchWriteService.save: buch=', kunde);
+        log.debug('KundeWriteService.save: kunde=', kunde);
 
         /* eslint-disable @typescript-eslint/naming-convention */
         const headers = new HttpHeaders({
@@ -124,10 +124,10 @@ export class KundeWriteService {
 
     /**
      * Ein vorhandenes Kunde aktualisieren
-     * @param buch Das JSON-Objekt mit den aktualisierten Buchdaten
+     * @param kunde Das JSON-Objekt mit den aktualisierten Kundedaten
      */
     update(kunde: Kunde): Observable<Kunde | UpdateError> {
-        log.debug('BuchWriteService.update: buch=', kunde);
+        log.debug('KundeWriteService.update: kunde=', kunde);
 
         // id, version und interessen gehoeren nicht zu den serverseitigen Nutzdaten
         const { id, version, interessen, ...kundeDTO } = kunde; // eslint-disable-line @typescript-eslint/no-unused-vars
@@ -155,7 +155,7 @@ export class KundeWriteService {
                 // eslint-disable-next-line @typescript-eslint/no-unused-vars
                 catchError((err: unknown, _$) => {
                     const errResponse = err as HttpErrorResponse;
-                    log.debug('BuchWriteService.update: err=', err);
+                    log.debug('KundeWriteService.update: err=', err);
                     return of(new UpdateError(errResponse.status, errResponse));
                 }),
 
@@ -192,11 +192,11 @@ export class KundeWriteService {
     }
 
     /**
-     * Ein Buch l&ouml;schen
-     * @param buch Das JSON-Objekt mit dem zu loeschenden Buch
+     * Ein Kunde l&ouml;schen
+     * @param kunde Das JSON-Objekt mit dem zu loeschenden Kunde
      */
     remove(kunde: Kunde): Observable<Record<string, unknown> | RemoveError> {
-        log.debug('KundeWriteService.remove: buch=', kunde);
+        log.debug('KundeWriteService.remove: kunde=', kunde);
         const url = `${this.#baseUrl}/${kunde.id}`;
 
         return this.httpClient.delete(url).pipe(
