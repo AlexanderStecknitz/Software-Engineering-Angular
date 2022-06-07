@@ -64,6 +64,7 @@
               }
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "src/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
@@ -140,5 +141,8 @@
       }
     }
   },
-  "defaultProject": "acme"
+  "defaultProject": "acme",
+  "cli": {
+    "analytics": false
+  }
 }
