@@ -16,10 +16,19 @@
  */
 
 import { HomeComponent } from './home.component';
+// eslint-disable-next-line import/no-unresolved
+import { MatCardModule } from '@angular/material/card';
+// eslint-disable-next-line import/no-unresolved
+import { MatIconModule } from '@angular/material/icon';
+// eslint-disable-next-line import/no-unresolved
+import { MatListModule } from '@angular/material/list';
+// eslint-disable-next-line import/no-unresolved
+import { MatTabsModule } from '@angular/material/tabs';
 import { NgModule } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 @NgModule({
+    imports: [MatCardModule, MatIconModule, MatListModule, MatTabsModule],
     declarations: [HomeComponent],
     // Der Singleton-Service "Title" wird benoetigt
     providers: [Title],

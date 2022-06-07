@@ -26,6 +26,7 @@ import log from 'loglevel';
     // https://github.com/angular/angular/tree/master/packages/common/locales
     // http://cldr.unicode.org
     templateUrl: './home.component.html',
+    styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
     constructor(private readonly title: Title) {
