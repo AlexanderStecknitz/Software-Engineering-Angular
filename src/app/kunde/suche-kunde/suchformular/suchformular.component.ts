@@ -9,6 +9,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-suchformular',
     templateUrl: './suchformular.component.html',
+    styleUrls: ['./suchformular.component.scss'],
 })
 export class SuchformularComponent {
     @Output()

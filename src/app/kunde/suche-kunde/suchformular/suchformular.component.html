@@ -1,6 +1,6 @@
 <mat-grid-list cols="1" rowHeight="100px">
   <form (submit)="onSubmit()" role="form">
-    <mat-grid-tile>Eingabe der Suchkriterien</mat-grid-tile>
+    <mat-grid-tile><h2>Eingabe der Suchkriterien</h2></mat-grid-tile>
     <mat-grid-tile>
       <hs-suche-nachname (nachname$)="setNachname($event)"></hs-suche-nachname>
     </mat-grid-tile>
@@ -16,6 +16,11 @@
         (lesen$)="setLesen($event)"
         (reisen$)="setReisen($event)">
       </hs-suche-interessen>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <button 
+        mat-raised-button
+        matTooltip="Hier drücken für die Suche">Suche</button>
     </mat-grid-tile>
   </form>
 </mat-grid-list>
