@@ -1,4 +1,6 @@
 <div class="text-danger" aria-label="Fehler" *ngIf="text">
-  <i class="material-icons">error</i>
-  <span class="fw-bold ms-1">{{ text }}</span>
+  <mat-card class="margin-card">
+    <mat-icon> warning </mat-icon>
+    <span class="textColorError">{{ text }}</span>
+  </mat-card>
 </div>
