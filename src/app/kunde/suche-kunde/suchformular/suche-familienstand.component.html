@@ -1,0 +1,14 @@
+<mat-form-field appearance="outline" class="familienstandSelector">
+    <mat-label>Familienstand</mat-label>
+    <mat-select
+          [(ngModel)]="familienstand"
+          (selectionChange)="onChange($event)"
+        >
+          <mat-option value=""></mat-option>
+          <mat-option value="L">Ledig</mat-option>
+          <mat-option value="VH">Verheiratet</mat-option>
+          <mat-option value="G">Geschieden</mat-option>
+          <mat-option value="VW">Verwitwet</mat-option>
+    </mat-select>
+    <mat-hint>Bitte Familienstand auswählen</mat-hint>
+  </mat-form-field>
