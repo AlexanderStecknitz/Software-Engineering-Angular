@@ -1,104 +1,21 @@
-<!--
-    Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
--->
-<section [@fadeIn]="'in'">
-  <span class="fw-bold" style="font-size: 18px">
-    Eingabe der Suchkriterien
-  </span>
-  <div>Spezifizieren Sie z.B. Nachname, Familienstand,</div>
-  <div>Geschlecht oder Interessen</div>
-  <!--
-      Bootstrap:
-          (xs):    -  480px ("extra small")
-          sm:      -  767px ("small")
-          md:  768 -  991px ("medium")
-          lg:  992 - 1199px ("large")
-          xl: 1200 px       ("extra large")
-      CSS-Klassen von Bootstrap:
-          card-..., form-..., row, btn, bg-primary, ...
-          https://v5.getbootstrap.com/docs/5.0/forms
-    -->
-
-  <!--
-      Formulare zur Interaktion mit dem Endbenutzer:
-      * Daten werden modifiziert, z.B. in Suchfelder oder
-        Erfassungs-/Aenderungsformularen
-      * Aenderungen wirken sich auf Teile der Seite aus:
-        Ergebnisse/Fehler anzeigen, Navigationsmoeglichkeiten
-      * Eingaben werden validiert
-
-      Template-Syntax:, z.B. (submit)="onFind()" fuer Output (= Event Binding)
-      d.h. Angular registriert einen "DOM Event Listener" fuer das Ereignis
-      "submit" und ruft die Methode onFind() der Komponentenklasse,
-      wenn das Ereignis eintritt.
-
-      Definition von Attributnamen gemaess HTML: Attribute names must
-      consist of one or more characters other than the space characters,
-      U+0000 NULL, """, "'", ">", "/", "=", the control characters,
-      and any characters that are not defined by Unicode.
-    -->
-
+<mat-grid-list cols="1" rowHeight="100px">
   <form (submit)="onSubmit()" role="form">
-    <hs-suche-nachname></hs-suche-nachname>
-    <!-- vertikale und horizontale "Gutter" als Abstaende ("gaps") zwischen den Spalten -->
-    <!-- https://v5.getbootstrap.com/docs/5.0/layout/gutters/#horizontal-gutters -->
-    <div class="row">
-      <div class="col offset-2 gy-4" style="color: rgb(156, 154, 154)">
-        <i class="material-icons">error_outline</i>
-        <!-- margin left -->
-        <span class="ms-2">
-          eine leere Eingabe liefert alle Kunden als Ergebnis
-        </span>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col offset-2 gy-4">
-        <div>
-          <button
-            mat-button
-            style="
-              background-color: rgb(237, 62, 62);
-              color: white;
-              box-sizing: border-box;
-              position: relative;
-              -webkit-user-select: none;
-              -moz-user-select: none;
-              user-select: none;
-              cursor: pointer;
-              outline: none;
-              border: none;
-              -webkit-tap-highlight-color: transparent;
-              display: inline-block;
-              white-space: nowrap;
-              text-decoration: none;
-              vertical-align: baseline;
-              text-align: center;
-              margin: 0;
-              min-width: 64px;
-              line-height: 36px;
-              padding: 0 16px;
-              border-radius: 4px;
-              overflow: visible;
-            "
-          >
-            Suchen...
-          </button>
-        </div>
-      </div>
-    </div>
+    <mat-grid-tile>Eingabe der Suchkriterien</mat-grid-tile>
+    <mat-grid-tile>
+      <hs-suche-nachname (nachname$)="setNachname($event)"></hs-suche-nachname>
+    </mat-grid-tile>
+    <mat-grid-tile> 
+      <hs-suche-familienstand (familienstand$)="setFamilienstand($event)"></hs-suche-familienstand>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <hs-suche-geschlechttype (geschlechtType$)="setGeschlechtType($event)"></hs-suche-geschlechttype>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <hs-suche-interessen
+        (sport$)="setSport($event)"
+        (lesen$)="setLesen($event)"
+        (reisen$)="setReisen($event)">
+      </hs-suche-interessen>
+    </mat-grid-tile>
   </form>
-</section>
+</mat-grid-list>
