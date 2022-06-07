@@ -31,9 +31,9 @@
 
 .box {
   //width: 100px;
-  padding-left: 15px;
-  padding-top: 15px;
-  margin: 10px;
+  padding-left: 5px;
+  padding-top: 5px;
+  margin: 5px;
   text-align: left;
 }
 
@@ -43,14 +43,6 @@
 }
 
 // Vorsicht bei CSS-Selektoren: Namespaces, um Kollisionen zu vermeiden
-.hs-nav {
-  //background-color: var(--background-color);
-  //background-image: var(--gradient);
-  //background-position: left top;
-  //background-repeat: repeat-x;
-  padding: 50px;
-  // display: block;
-}
 
 // wird nicht benutzt
 .router-link-active {

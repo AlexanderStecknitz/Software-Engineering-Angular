@@ -16,18 +16,16 @@
 -->
 
 <mat-drawer-container class="nav-container">
-   <!--Left content-->
-   <mat-drawer mode="side" opened class="nav-navigation">
-      Nav Content
-      <!-- Eigene Komponente fuer die Navigationsleiste -->
-      <hs-header></hs-header>
-   </mat-drawer>
-   <mat-drawer-content class="nav-content">
-      Main Content
-      <!-- Eigene Komponente fuer den Haupteil: austauschbar durch Routing -->
-      <hs-main></hs-main>
-   </mat-drawer-content>
- </mat-drawer-container>
+  <!--Left content-->
+  <mat-drawer mode="side" opened class="nav-navigation">
+    <!-- Eigene Komponente fuer die Navigationsleiste -->
+    <hs-header></hs-header>
+  </mat-drawer>
+  <mat-drawer-content class="nav-content">
+    <!-- Eigene Komponente fuer den Haupteil: austauschbar durch Routing -->
+    <hs-main></hs-main>
+  </mat-drawer-content>
+</mat-drawer-container>
 
 <!-- Eigene Komponente fuer die Fussleiste -->
 <hs-footer></hs-footer>

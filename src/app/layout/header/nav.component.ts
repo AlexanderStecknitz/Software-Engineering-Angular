@@ -27,6 +27,7 @@ import { tap } from 'rxjs/operators';
 @Component({
     selector: 'hs-nav',
     templateUrl: './nav.component.html',
+    styleUrls: ['./header.component.scss'],
 })
 export class NavComponent implements OnInit {
     // Suffix "$" wird als "Finnish Notation" bezeichnet https://medium.com/@benlesh/observables-and-finnish-notation-df8356ed1c9b
