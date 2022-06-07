@@ -1,3 +1,5 @@
+// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable import/no-unresolved */
 /*
  * Copyright (C) 2016 - present Juergen Zimmermann, Hochschule Karlsruhe
  *

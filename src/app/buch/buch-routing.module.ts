@@ -18,28 +18,28 @@
 import { RouterModule, type Routes } from '@angular/router';
 import { AdminGuard } from '../auth/admin.guard';
 import { BalkendiagrammComponent } from './diagramme/balkendiagramm.component';
-import { KundeModule } from './buch.module';
-import { CreateKundeComponent } from './create-kunde/create-kunde.component';
-import { CreateKundeGuard } from './create-kunde/create-kunde.guard';
-import { DetailsKundeComponent } from './details-kunde/details-kunde.component';
+import { BuchModule } from './buch.module';
+import { CreateBuchComponent } from './create-buch/create-buch.component';
+import { CreateBuchGuard } from './create-buch/create-buch.guard';
+import { DetailsBuchComponent } from './details-buch/details-buch.component';
 import { LiniendiagrammComponent } from './diagramme/liniendiagramm.component';
 import { NgModule } from '@angular/core';
-import { SucheKundenComponent } from './suche-kunden/suche-kunden.component';
+import { SucheBuecherComponent } from './suche-buecher/suche-buecher.component';
 import { TortendiagrammComponent } from './diagramme/tortendiagramm.component';
-import { UpdateKundeComponent } from './update-kunde/update-kunde.component';
+import { UpdateBuchComponent } from './update-buch/update-buch.component';
 
-// Route-Definitionen fuer das Feature-Modul "kunde":
+// Route-Definitionen fuer das Feature-Modul "buch":
 // Zuordnung von Pfaden und Komponenten mit HTML-Templates
 const routes: Routes = [
     {
         path: 'suche',
-        component: SucheKundeComponent,
+        component: SucheBuecherComponent,
     },
     {
         path: 'create',
-        component: CreateKundeComponent,
+        component: CreateBuchComponent,
         canActivate: [AdminGuard],
-        canDeactivate: [CreateKundeGuard],
+        canDeactivate: [CreateBuchGuard],
     },
     {
         path: 'balkendiagramm',
@@ -60,17 +60,17 @@ const routes: Routes = [
     // id als Pfad-Parameter
     {
         path: 'update/:id',
-        component: UpdateKundeComponent,
+        component: UpdateBuchComponent,
         canActivate: [AdminGuard],
     },
     {
         path: ':id',
-        component: DetailsKundeComponent,
+        component: DetailsBuchComponent,
     },
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes), KundeModule],
+    imports: [RouterModule.forChild(routes), BuchModule],
     exports: [RouterModule],
 })
-export class KundeRoutingModule {}
+export class BuchRoutingModule {}
