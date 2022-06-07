@@ -15,7 +15,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// import { DetailsKundeModule } from './details-kunde/details-kunde.module';
 import { NgModule } from '@angular/core';
+import { SucheKundeModule } from './suche-kunde/suche-kunde.module';
+// import { UpdateKundeModule } from './update-kunde/update-kunde.module';
 
-@NgModule({})
+@NgModule({ imports: [SucheKundeModule] })
 export class KundeModule {}
