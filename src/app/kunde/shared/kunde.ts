@@ -2,6 +2,8 @@ import type { Temporal } from '@js-temporal/polyfill';
 
 export type GeschlechtType = 'DIVERS' | 'MAENNLICH' | 'WEIBLICH';
 
+export const EMAIL_REGEX = /@.*?\./u;
+
 export type Familienstand =
     | 'GESCHIEDEN'
     | 'LEDIG'
