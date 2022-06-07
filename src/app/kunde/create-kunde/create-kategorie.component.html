@@ -1,0 +1,17 @@
+<mat-form-field
+  appearance="outline"
+  class="kategorieInputField"
+  [formGroup]="createForm"
+>
+  <mat-label>Kategorie</mat-label>
+  <input
+    matInput
+    type="number"
+    placeholder="0"
+    formControlName="kategorie"
+    class="form-check-input"
+  />
+  <mat-error *ngIf="kategorie.invalid"
+    >Keine negativen Zahlen erlaubt.</mat-error
+  >
+</mat-form-field>
