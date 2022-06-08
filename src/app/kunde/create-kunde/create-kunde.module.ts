@@ -25,6 +25,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
 import { Title } from '@angular/platform-browser';
@@ -44,6 +45,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
         MatFormFieldModule,
         MatGridListModule,
         MatInputModule,
+        MatSelectModule,
         SharedModule,
     ],
     declarations: [
