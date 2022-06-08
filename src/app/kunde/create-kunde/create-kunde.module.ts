@@ -18,6 +18,7 @@
  */
 
 import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { CreateEmailComponent } from './create-email.component';
 import { CreateKategorieComponent } from './create-kategorie-component';
 import { CreateKundeComponent } from './create-kunde.component';
 import { CreateNachnameComponent } from './create-nachname.component';
@@ -49,6 +50,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
         SharedModule,
     ],
     declarations: [
+        CreateEmailComponent,
         CreateKategorieComponent,
         CreateKundeComponent,
         CreateNachnameComponent,

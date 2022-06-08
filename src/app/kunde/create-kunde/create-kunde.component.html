@@ -18,12 +18,17 @@
   <mat-grid-list cols="1" rowHeight="100px">
     <form (submit)="onSubmit()" role="form">
       <mat-grid-tile><h2>Anlegen eines Kunden</h2></mat-grid-tile>
-      <mat-grid-tile>
-        <hs-create-kategorie class="element-create"></hs-create-kategorie>
-      </mat-grid-tile>
+      <!-- Forms go in here -->
       <mat-grid-tile>
         <hs-create-nachname class="element-create"></hs-create-nachname>
       </mat-grid-tile>
+      <mat-grid-tile>
+        <hs-create-email class="element-create"></hs-create-email>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <hs-create-kategorie class="element-create"></hs-create-kategorie>
+      </mat-grid-tile>
+      <!-- Forms end here -->
       <mat-grid-tile>
         <button mat-raised-button matTooltip="Hier drücken um Kunden anzulegen">
           Kunde anlegen
