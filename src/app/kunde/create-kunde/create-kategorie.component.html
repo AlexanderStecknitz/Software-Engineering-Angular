@@ -1,6 +1,6 @@
 <mat-form-field
   appearance="fill"
-  class="kategorieInputField"
+  class="userInputField"
   [formGroup]="createForm"
 >
   <mat-label>Kategorie</mat-label>
@@ -13,10 +13,4 @@
   <mat-error *ngIf="kategorie.invalid"
     >Keine negativen Zahlen erlaubt.</mat-error
   >
-</mat-form-field>
-
-<mat-form-field appearance="fill">
-  <mat-label>Font size</mat-label>
-  <input matInput type="number" placeholder="Ex. 12">
-  <span matSuffix>px</span>
 </mat-form-field>
