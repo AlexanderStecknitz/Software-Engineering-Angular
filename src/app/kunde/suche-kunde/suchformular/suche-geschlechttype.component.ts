@@ -10,7 +10,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-suche-geschlechttype',
     templateUrl: './suche-geschlechttype.component.html',
-    styleUrls: ['./suche-geschlechttype.component.scss'],
+    styleUrls: ['./suchformular.component.scss'],
 })
 export class SucheGeschlechtTypeComponent {
     geschlechtType: GeschlechtType | '' = '';

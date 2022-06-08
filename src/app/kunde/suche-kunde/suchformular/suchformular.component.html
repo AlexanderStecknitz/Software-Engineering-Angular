@@ -1,26 +1,28 @@
-<mat-grid-list cols="1" rowHeight="100px">
-  <form (submit)="onSubmit()" role="form">
-    <mat-grid-tile><h2>Eingabe der Suchkriterien</h2></mat-grid-tile>
-    <mat-grid-tile>
-      <hs-suche-nachname (nachname$)="setNachname($event)"></hs-suche-nachname>
-    </mat-grid-tile>
-    <mat-grid-tile> 
-      <hs-suche-familienstand (familienstand$)="setFamilienstand($event)"></hs-suche-familienstand>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <hs-suche-geschlechttype (geschlechtType$)="setGeschlechtType($event)"></hs-suche-geschlechttype>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <hs-suche-interessen
-        (sport$)="setSport($event)"
-        (lesen$)="setLesen($event)"
-        (reisen$)="setReisen($event)">
-      </hs-suche-interessen>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <button 
-        mat-raised-button
-        matTooltip="Hier drücken für die Suche">Suche</button>
-    </mat-grid-tile>
-  </form>
-</mat-grid-list>
+<div class="box-create">
+  <mat-grid-list cols="1" rowHeight="100px">
+    <form (submit)="onSubmit()" role="form">
+      <mat-grid-tile><h2>Eingabe der Suchkriterien</h2></mat-grid-tile>
+      <mat-grid-tile>
+        <hs-suche-nachname (nachname$)="setNachname($event)" class="element-create"></hs-suche-nachname>
+      </mat-grid-tile>
+      <mat-grid-tile> 
+        <hs-suche-familienstand (familienstand$)="setFamilienstand($event)" class="element-create"></hs-suche-familienstand>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <hs-suche-geschlechttype (geschlechtType$)="setGeschlechtType($event)" class="element-create"></hs-suche-geschlechttype>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <hs-suche-interessen
+          (sport$)="setSport($event)"
+          (lesen$)="setLesen($event)"
+          (reisen$)="setReisen($event)" class="element-create">
+        </hs-suche-interessen>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button 
+          mat-raised-button
+          matTooltip="Hier drücken für die Suche">Suche</button>
+      </mat-grid-tile>
+    </form>
+  </mat-grid-list>
+</div>

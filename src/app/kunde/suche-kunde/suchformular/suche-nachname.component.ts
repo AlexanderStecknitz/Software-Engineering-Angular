@@ -5,7 +5,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-suche-nachname',
     templateUrl: './suche-nachname.component.html',
-    styleUrls: ['./suche-nachname.component.scss'],
+    styleUrls: ['./suchformular.component.scss'],
 })
 export class SucheNachnameComponent {
     nachname = '';
