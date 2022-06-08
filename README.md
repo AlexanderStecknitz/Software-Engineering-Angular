@@ -1,7 +1,5 @@
 # Zimmermann Kunde
 
-Hint: _press `ctrl+shift+v` to enable preview mode_.
-
 A webserver that can search, update and create "Kunden" aka Customers. Comes with authentication.
 Written by Alexander Seitz, Alexander Stecknitz and Henrik Chung, original code by Jürgen Zimmermann.
 
