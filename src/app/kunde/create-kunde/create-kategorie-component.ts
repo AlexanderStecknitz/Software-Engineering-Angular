@@ -26,6 +26,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-create-kategorie',
     templateUrl: './create-kategorie.component.html',
+    styleUrls: ['./create-kunde.component.scss'],
 })
 export class CreateKategorieComponent implements OnInit {
     @Input()
