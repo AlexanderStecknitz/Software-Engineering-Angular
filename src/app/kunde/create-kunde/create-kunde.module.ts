@@ -1,3 +1,5 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable import/no-unresolved */
 /*
  * Copyright (C) 2016 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
@@ -18,9 +20,9 @@
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { CreateKategorieComponent } from './create-kategorie-component';
 import { CreateKundeComponent } from './create-kunde.component';
-// eslint-disable-next-line import/no-unresolved
+import { CreateNachnameComponent } from './create-nachname.component';
+import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-// eslint-disable-next-line import/no-unresolved
 import { MatGridListModule } from '@angular/material/grid-list';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
@@ -33,15 +35,20 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 // BuchModule ist ein "FeatureModule", das Features fuer Buecher bereitstellt
 @NgModule({
     imports: [
-        MatFormFieldModule,
         CalendarModule.forRoot({
             provide: DateAdapter,
             useFactory: adapterFactory,
         }),
+        MatButtonModule,
+        MatFormFieldModule,
         MatGridListModule,
         SharedModule,
     ],
-    declarations: [CreateKategorieComponent, CreateKundeComponent],
+    declarations: [
+        CreateKategorieComponent,
+        CreateKundeComponent,
+        CreateNachnameComponent,
+    ],
     providers: [Title],
 })
 export class CreateKundeModule {}
