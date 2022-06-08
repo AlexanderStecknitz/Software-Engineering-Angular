@@ -28,8 +28,8 @@ import { Title } from '@angular/platform-browser'; // eslint-disable-line @types
 import log from 'loglevel';
 
 /**
- * Komponente mit dem Tag &lt;create-kunde&gt;, um das Erfassungsformular
- * f&uuml;r ein neues Kunde zu realisieren.
+ * Komponente mit dem Tag "hs-create-kunde" um das Erfassungsformular
+ * für einen neuen Kunde zu realisieren.
  */
 @Component({
     selector: 'hs-create-kunde',
@@ -56,12 +56,12 @@ export class CreateKundeComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.titleService.setTitle('Neues Kunde');
+        this.titleService.setTitle('Neuer Kunde');
     }
 
     /**
      * Die Methode <code>onSubmit</code> realisiert den Event-Handler, wenn das
-     * Formular abgeschickt wird, um ein neues Kunde anzulegen.
+     * Formular abgeschickt wird, um einen neuen Kunde anzulegen.
      * @return false, um das durch den Button-Klick ausgel&ouml;ste Ereignis
      *         zu konsumieren.
      */
@@ -82,11 +82,11 @@ export class CreateKundeComponent implements OnInit {
         }
 
         const kundeForm = this.createForm.value as KundeForm;
-        const neuesKunde = toKunde(kundeForm);
-        log.debug('CreateKundeComponent.onSave: neuesKunde=', neuesKunde);
+        const neuerKunde = toKunde(kundeForm);
+        log.debug('CreateKundeComponent.onSave: neuerKunde=', neuerKunde);
 
         this.service
-            .save(neuesKunde)
+            .save(neuerKunde)
             .pipe(
                 // 1. Datensatz empfangen und danach implizites "unsubscribe"
                 first(),
