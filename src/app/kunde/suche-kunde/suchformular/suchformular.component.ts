@@ -1,15 +1,19 @@
 // eslint-disable-next-line eslint-comments/disable-enable-pair
-/* eslint-disable @typescript-eslint/consistent-type-imports */
-// eslint-disable-next-line eslint-comments/disable-enable-pair
-/* eslint-disable sort-imports */
-import { Familienstand, GeschlechtType, Suchkriterien } from '../../shared';
+/* eslint-disable import/no-unresolved */
 import { Component, Output } from '@angular/core';
+import type {
+    Familienstand,
+    GeschlechtType,
+    Suchkriterien,
+} from '../../shared';
 import { Subject } from 'rxjs';
+import { fadeIn } from 'src/app/shared';
 import log from 'loglevel';
 @Component({
     selector: 'hs-suchformular',
     templateUrl: './suchformular.component.html',
     styleUrls: ['./suchformular.component.scss'],
+    animations: [fadeIn],
 })
 export class SuchformularComponent {
     @Output()
@@ -70,7 +74,7 @@ export class SuchformularComponent {
      */
     onSubmit() {
         log.debug(
-            'SuchformularComponent.onSubmit: titel / verlag / art / javascript / typescript',
+            'SuchformularComponent.onSubmit: nachname / geschlechtType / familienstand / lesen / reisen / sport',
             this.#nachname,
             this.#geschlechtType,
             this.#familienstand,
