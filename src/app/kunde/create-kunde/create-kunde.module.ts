@@ -22,10 +22,12 @@ import { CreateEmailComponent } from './create-email.component';
 import { CreateFamilienstandComponent } from './create-familienstand.component';
 import { CreateGeburtsdatumComponent } from './create-geburtsdatum.component';
 import { CreateGeschlechtComponent } from './create-geschlecht.component';
+import { CreateInteressenComponent } from './create-interessen.component';
 import { CreateKategorieComponent } from './create-kategorie-component';
 import { CreateKundeComponent } from './create-kunde.component';
 import { CreateNachnameComponent } from './create-nachname.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -49,6 +51,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
             useFactory: adapterFactory,
         }),
         MatButtonModule,
+        MatCheckboxModule,
         MatDatepickerModule,
         MatFormFieldModule,
         MatGridListModule,
@@ -63,6 +66,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
         CreateFamilienstandComponent,
         CreateGeburtsdatumComponent,
         CreateGeschlechtComponent,
+        CreateInteressenComponent,
         CreateKategorieComponent,
         CreateKundeComponent,
         CreateNachnameComponent,
