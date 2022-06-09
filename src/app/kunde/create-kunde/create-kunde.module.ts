@@ -20,13 +20,18 @@
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { CreateEmailComponent } from './create-email.component';
 import { CreateFamilienstandComponent } from './create-familienstand.component';
+import { CreateGeburtsdatumComponent } from './create-geburtsdatum.component';
+import { CreateGeschlechtComponent } from './create-geschlecht.component';
 import { CreateKategorieComponent } from './create-kategorie-component';
 import { CreateKundeComponent } from './create-kunde.component';
 import { CreateNachnameComponent } from './create-nachname.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
@@ -44,15 +49,20 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
             useFactory: adapterFactory,
         }),
         MatButtonModule,
+        MatDatepickerModule,
         MatFormFieldModule,
         MatGridListModule,
+        MatIconModule,
         MatInputModule,
+        MatNativeDateModule,
         MatSelectModule,
         SharedModule,
     ],
     declarations: [
         CreateEmailComponent,
         CreateFamilienstandComponent,
+        CreateGeburtsdatumComponent,
+        CreateGeschlechtComponent,
         CreateKategorieComponent,
         CreateKundeComponent,
         CreateNachnameComponent,
