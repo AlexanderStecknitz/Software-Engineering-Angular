@@ -18,6 +18,7 @@
  */
 
 import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { CommonModule } from '@angular/common';
 import { CreateEmailComponent } from './create-email.component';
 import { CreateFamilienstandComponent } from './create-familienstand.component';
 import { CreateGeburtsdatumComponent } from './create-geburtsdatum.component';
@@ -43,6 +44,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import { Title } from '@angular/platform-browser';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
@@ -57,6 +59,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
             provide: DateAdapter,
             useFactory: adapterFactory,
         }),
+        CommonModule,
         MatButtonModule,
         MatCardModule,
         MatCheckboxModule,
@@ -68,6 +71,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
         MatNativeDateModule,
         MatSelectModule,
         MatSlideToggleModule,
+        ReactiveFormsModule,
         SharedModule,
     ],
     declarations: [
