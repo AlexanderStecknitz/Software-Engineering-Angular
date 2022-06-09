@@ -37,6 +37,7 @@ export class UpdateInteressenComponent implements OnInit {
 
     interessen!: FormControl;
 
+    // This method might be redundant
     onUpdate() {
         if (this.updateForm.pristine) {
             log.debug('UpdateInteressenComponent.onUpdate: keine Aenderungen');
