@@ -1,0 +1,55 @@
+<!--
+    Copyright (C) 2018 - present Juergen Zimmermann, Hochschule Karlsruhe
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<div class="row">
+    <label for="newsletterInput" class="col col-2 col-form-label gy-3"
+      >Newsletter *</label
+    >
+  
+    <div class="col col-10 gy-3" [formGroup]="form">
+      <div class="input-group">
+        <input
+          id="newsletterInput"
+          placeholder="Newsletter"
+          class="form-control"
+          autofocus
+          formControlName="newsletter"
+          [class.is-invalid]="newsletter.invalid && newsletter.touched"
+          [class.is-valid]="newsletter.valid && newsletter.touched"
+        />
+  
+        <div
+          class="invalid-feedback"
+          *ngIf="newsletter.invalid && newsletter.touched && newsletter.errors"
+        >
+          <i class="material-icons">error</i>
+          <span class="ms-1">
+            <span *ngIf="newsletter.errors['required']">
+              Ein Newsletter muss eingegeben werden.
+            </span>
+            <span *ngIf="newsletter.errors['minlength']">
+              Ein Newsletter muss mindestens 2 Zeichen lang sein.
+            </span>
+            <span *ngIf="newsletter.errors['pattern']">
+              Ein Newsletter muss mit einem Buchstaben beginnen.
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
