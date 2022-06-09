@@ -10,6 +10,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-suche-familienstand',
     templateUrl: './suche-familienstand.component.html',
+    styleUrls: ['../suchformular.component.scss'],
 })
 export class SucheFamilienstandComponent {
     familienstand: Familienstand | '' = '';
