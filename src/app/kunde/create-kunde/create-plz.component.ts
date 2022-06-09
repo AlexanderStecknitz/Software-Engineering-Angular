@@ -20,7 +20,7 @@ import { FormControl, type FormGroup, Validators } from '@angular/forms';
 import log from 'loglevel';
 
 /**
- * Komponente mit dem Tag "hs-create-ort", um das Erfassungsformular
+ * Komponente mit dem Tag "hs-create-plz", um das Erfassungsformular
  * für einen neuen Kunden zu realisieren.
  */
 @Component({
