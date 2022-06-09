@@ -17,13 +17,16 @@
 <!-- dynamisches Formular durch formGroup -->
 <form [formGroup]="createForm" role="form">
   <!-- Todo Implement FontAwesome icon for warning symbol -->
-  <mat-card *ngIf="showWarning" class="warning-box">
-    <mat-card-title>
-      Achtung!
-    </mat-card-title>
-    <br>
-    Wenn Sie die Seite jetzt verlassen, verlieren Sie Ihre eingegebenen Daten.
-  </mat-card>
+  <div class="warning-box" *ngIf="showWarning">
+    <mat-card>
+      <mat-card-title>
+        Achtung!
+      </mat-card-title>
+      <br>
+      Wenn Sie die Seite jetzt verlassen, verlieren Sie Ihre eingegebenen Daten.
+    </mat-card>
+  </div>
+
 
   <div class="box-create">
     <mat-grid-list cols="1" rowHeight="100px">
