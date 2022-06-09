@@ -42,6 +42,16 @@
   //background: red;
 }
 
+.split-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  width: 50%;
+  gap: 10px;
+  //height: 60px;
+  //background: red;
+}
+
 .interessen-margin {
   margin: 0 30px;
 }
