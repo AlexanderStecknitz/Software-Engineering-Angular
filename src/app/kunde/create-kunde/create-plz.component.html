@@ -1,0 +1,13 @@
+<mat-form-field appearance="outline" class="userInputField" [formGroup]="createForm">
+  <mat-label>Postleitzahl</mat-label>
+  <input
+    matInput
+    placeholder="ex. 68723"
+    autocomplete="off"
+    [class.is-invalid]="plz.invalid && plz.touched"
+    [class.is-valid]="plz.valid && plz.touched"
+    class="form-control"
+    formControlName="plz"
+  />
+  <mat-hint>Bitte die Postleitzahl eingeben</mat-hint>
+</mat-form-field>
