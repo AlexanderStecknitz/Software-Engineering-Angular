@@ -26,10 +26,11 @@
         <hs-create-email class="element-create"></hs-create-email>
       </mat-grid-tile>
       <mat-grid-tile>
-        <hs-create-geschlecht class="element-create"></hs-create-geschlecht>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <hs-create-geburtsdatum class="element-create"></hs-create-geburtsdatum>
+        <div class="split-section">
+          <hs-create-geburtsdatum class="element-create"></hs-create-geburtsdatum>
+          <hs-create-geschlecht class="element-create"></hs-create-geschlecht>
+          <hs-create-familienstand class="element-create"></hs-create-familienstand>
+        </div>
       </mat-grid-tile>
       <mat-grid-tile>
       <div class="split-section">
@@ -38,13 +39,14 @@
       </div>
       </mat-grid-tile>
       <mat-grid-tile>
-        <hs-create-familienstand
-          class="element-create"
-        ></hs-create-familienstand>
-      </mat-grid-tile>
-      <mat-grid-tile>
         <hs-create-kategorie class="element-create"></hs-create-kategorie>
       </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="split-section">
+          <hs-create-umsatz class="element-create"></hs-create-umsatz>
+          <hs-create-waehrung class="element-create"></hs-create-waehrung>
+        </div>
+        </mat-grid-tile>
       <mat-grid-tile>
         <hs-create-interessen class="element-create"></hs-create-interessen>
       </mat-grid-tile>
@@ -53,7 +55,7 @@
       </mat-grid-tile>
       <!-- Forms end here -->
       <mat-grid-tile>
-        <button mat-raised-button matTooltip="Hier drücken um Kunden anzulegen">
+        <button mat-raised-button color="primary" matTooltip="Hier drücken um Kunden anzulegen">
           Kunde anlegen
         </button>
       </mat-grid-tile>

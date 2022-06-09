@@ -29,6 +29,8 @@ import { CreateNachnameComponent } from './create-nachname.component';
 import { CreateNewsletterComponent } from './create-newsletter.component';
 import { CreateOrtComponent } from './create-ort.component';
 import { CreatePlzComponent } from './create-plz.component';
+import { CreateUmsatzComponent } from './create-umsatz.component';
+import { CreateWaehrungComponent } from './create-waehrung.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -78,6 +80,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
         CreateNewsletterComponent,
         CreateOrtComponent,
         CreatePlzComponent,
+        CreateUmsatzComponent,
+        CreateWaehrungComponent,
     ],
     providers: [Title],
 })

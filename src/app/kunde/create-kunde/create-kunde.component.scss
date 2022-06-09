@@ -38,8 +38,7 @@
   display: flex;
   align-content: center;
   align-items: center;
-  height: 60px;
-  //background: red;
+  gap: 60px;
 }
 
 .split-section {
@@ -48,10 +47,5 @@
   align-items: center;
   width: 50%;
   gap: 10px;
-  //height: 60px;
-  //background: red;
 }
 
-.interessen-margin {
-  margin: 0 30px;
-}

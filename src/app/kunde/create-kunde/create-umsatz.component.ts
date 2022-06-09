@@ -20,18 +20,16 @@ import { FormControl, type FormGroup, Validators } from '@angular/forms';
 import log from 'loglevel';
 
 /**
- * Komponente mit dem Tag "hs-create-plz", um das Erfassungsformular
+ * Komponente mit dem Tag "hs-create-ort", um das Erfassungsformular
  * für einen neuen Kunden zu realisieren.
  */
 @Component({
     // moduleId: module.id,
-    selector: 'hs-create-plz',
-    templateUrl: './create-plz.component.html',
+    selector: 'hs-create-umsatz',
+    templateUrl: './create-umsatz.component.html',
     styleUrls: ['./create-kunde.component.scss'],
 })
-export class CreatePlzComponent implements OnInit {
-    private static readonly MIN_LENGTH = 2;
-
+export class CreateUmsatzComponent implements OnInit {
     @Input()
     createForm!: FormGroup;
 
@@ -40,16 +38,11 @@ export class CreatePlzComponent implements OnInit {
     //    serverseitig mittels Request/Response
     //    clientseitig bei den Ereignissen keyup, change, blur, ...
     // Ein Endbenutzer bewirkt staendig einen neuen Fehlerstatus
-    readonly plz = new FormControl(undefined, [
-        Validators.required,
-        Validators.minLength(CreatePlzComponent.MIN_LENGTH),
-        // Todo: Add proper RegEx to validator.
-        Validators.pattern(/^\w/u),
-    ]);
+    readonly umsatz = new FormControl(undefined, Validators.required);
 
     ngOnInit() {
-        log.debug('CreatePlzComponent.ngOnInit');
+        log.debug('CreateUmsatzComponent.ngOnInit');
         // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.createForm.addControl('plz', this.plz);
+        this.createForm.addControl('umsatz', this.umsatz);
     }
 }
