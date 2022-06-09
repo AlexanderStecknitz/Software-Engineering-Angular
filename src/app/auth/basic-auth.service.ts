@@ -21,6 +21,7 @@ import {
     HttpErrorResponse,
     HttpHeaders,
     type HttpResponse,
+    // eslint-disable-next-line import/no-unresolved
 } from '@angular/common/http';
 import { catchError, first, map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
