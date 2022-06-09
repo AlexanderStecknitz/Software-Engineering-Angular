@@ -1,11 +1,11 @@
 <mat-form-field appearance="outline" class="userInputField">
   <mat-label>Geschlecht</mat-label>
-  <mat-select 
-  formControlName="geschlecht"
-  required
-  [class.is-invalid]="geschlecht.invalid && geschlecht.touched"
-  [class.is-valid]="geschlecht.valid && geschlecht.touched">
-    <mat-option value=""></mat-option>
+  <mat-select
+    formControlName="geschlecht"
+    required
+    [class.is-invalid]="geschlecht.invalid && geschlecht.touched"
+    [class.is-valid]="geschlecht.valid && geschlecht.touched"
+  >
     <mat-option value="M">Männlich</mat-option>
     <mat-option value="W">Weiblich</mat-option>
     <mat-option value="D">Divers</mat-option>
