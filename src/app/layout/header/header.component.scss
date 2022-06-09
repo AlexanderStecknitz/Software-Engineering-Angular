@@ -25,8 +25,20 @@
   flex-direction: column;
   justify-content: left;
   align-items: left;
+  gap: 20px;
   //height: 300px;
   //border: 1px solid black; /* for demo purposes */
+}
+
+.flex-box {
+  flex-direction: column;
+  display: flex;
+  align-content: left;
+  align-items: left;
+  width: 100%;
+  //padding-left: 5px;
+  //gap: 10px;
+  //margin: 5px;
 }
 
 .box {

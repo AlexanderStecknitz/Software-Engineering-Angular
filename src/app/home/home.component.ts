@@ -34,6 +34,6 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.title.setTitle('Zimmermann Kunde');
+        this.title.setTitle('Homepage');
     }
 }
