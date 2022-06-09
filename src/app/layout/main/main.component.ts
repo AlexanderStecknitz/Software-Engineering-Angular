@@ -28,7 +28,7 @@ import log from 'loglevel';
     // beim Routing
     template: `
         <main>
-            <div class="col col-12 mt-3"><router-outlet></router-outlet></div>
+            <router-outlet></router-outlet>
         </main>
     `,
 })
