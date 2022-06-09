@@ -10,10 +10,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { SucheFamilienstandModule } from './suche-familienstand.module';
-import { SucheGeschlechtTypeModule } from './suche-geschlechttype.module';
-import { SucheNachnameModule } from './suche-nachname.module';
-import { SucheInteressenModule } from './suche-interessen.module';
+import { SucheFamilienstandModule } from './familienstand/suche-familienstand.module';
+import { SucheGeschlechtTypeModule } from './geschlecht/suche-geschlechttype.module';
+import { SucheNachnameModule } from './nachname/suche-nachname.module';
+import { SucheInteressenModule } from './interessen/suche-interessen.module';
 @NgModule({
     declarations: [SuchformularComponent],
     exports: [SuchformularComponent],

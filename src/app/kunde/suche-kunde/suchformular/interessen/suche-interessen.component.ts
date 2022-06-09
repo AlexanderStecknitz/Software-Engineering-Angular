@@ -5,7 +5,6 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-suche-interessen',
     templateUrl: './suche-interessen.component.html',
-    styleUrls: ['./suchformular.component.scss'],
 })
 export class SucheInteressenComponent {
     lesen = false;
