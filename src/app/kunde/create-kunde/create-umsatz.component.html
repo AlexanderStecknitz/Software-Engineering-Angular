@@ -1,0 +1,13 @@
+<mat-form-field appearance="outline" class="userInputField" [formGroup]="createForm">
+  <mat-label>Umsatz</mat-label>
+  <input
+    matInput
+    placeholder="ex. 68723"
+    autocomplete="off"
+    [class.is-invalid]="umsatz.invalid && umsatz.touched"
+    [class.is-valid]="umsatz.valid && umsatz.touched"
+    class="form-control"
+    formControlName="umsatz"
+  />
+  <mat-hint>Bitte den Umsatz eingeben</mat-hint>
+</mat-form-field>
