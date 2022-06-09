@@ -22,6 +22,7 @@ import {
     type HttpHandler,
     type HttpInterceptor,
     type HttpRequest,
+    // eslint-disable-next-line import/no-unresolved
 } from '@angular/common/http';
 import { AuthService } from './auth.service'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { type Observable } from 'rxjs';

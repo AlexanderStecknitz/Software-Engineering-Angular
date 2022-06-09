@@ -1,7 +1,7 @@
 // eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable import/no-unresolved */
 import { Component, Output } from '@angular/core';
-import type { GeschlechtType } from '../../shared';
+import type { GeschlechtType } from '../../../shared';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { MatSelectChange } from '@angular/material/select';
 import { Subject } from 'rxjs';
@@ -10,7 +10,6 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-suche-geschlechttype',
     templateUrl: './suche-geschlechttype.component.html',
-    styleUrls: ['./suchformular.component.scss'],
 })
 export class SucheGeschlechtTypeComponent {
     geschlechtType: GeschlechtType | '' = '';
