@@ -1,0 +1,13 @@
+<mat-form-field appearance="outline" class="userInputField" [formGroup]="createForm">
+  <mat-label>Ort</mat-label>
+  <input
+    matInput
+    placeholder="ex. Birkenstadt"
+    autocomplete="off"
+    [class.is-invalid]="ort.invalid && ort.touched"
+    [class.is-valid]="ort.valid && ort.touched"
+    class="form-control"
+    formControlName="ort"
+  />
+  <mat-hint>Bitte den Ort eingeben</mat-hint>
+</mat-form-field>

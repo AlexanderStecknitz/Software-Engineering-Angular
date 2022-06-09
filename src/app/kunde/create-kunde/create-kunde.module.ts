@@ -20,14 +20,25 @@
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { CreateEmailComponent } from './create-email.component';
 import { CreateFamilienstandComponent } from './create-familienstand.component';
+import { CreateGeburtsdatumComponent } from './create-geburtsdatum.component';
+import { CreateGeschlechtComponent } from './create-geschlecht.component';
+import { CreateInteressenComponent } from './create-interessen.component';
 import { CreateKategorieComponent } from './create-kategorie-component';
 import { CreateKundeComponent } from './create-kunde.component';
 import { CreateNachnameComponent } from './create-nachname.component';
+import { CreateNewsletterComponent } from './create-newsletter.component';
+import { CreateOrtComponent } from './create-ort.component';
+import { CreatePlzComponent } from './create-plz.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
 import { Title } from '@angular/platform-browser';
@@ -44,18 +55,29 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
             useFactory: adapterFactory,
         }),
         MatButtonModule,
+        MatCheckboxModule,
+        MatDatepickerModule,
         MatFormFieldModule,
         MatGridListModule,
+        MatIconModule,
         MatInputModule,
+        MatNativeDateModule,
         MatSelectModule,
+        MatSlideToggleModule,
         SharedModule,
     ],
     declarations: [
         CreateEmailComponent,
         CreateFamilienstandComponent,
+        CreateGeburtsdatumComponent,
+        CreateGeschlechtComponent,
+        CreateInteressenComponent,
         CreateKategorieComponent,
         CreateKundeComponent,
         CreateNachnameComponent,
+        CreateNewsletterComponent,
+        CreateOrtComponent,
+        CreatePlzComponent,
     ],
     providers: [Title],
 })
