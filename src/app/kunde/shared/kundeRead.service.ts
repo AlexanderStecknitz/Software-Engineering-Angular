@@ -221,16 +221,13 @@ export class KundeReadService {
             httpParams = httpParams.set('geschlecht', geschlechtType);
         }
         if (sport) {
-            // httpParams = httpParams.set('sport', 'true');
-            httpParams = httpParams.set('interessen', 'S');
+            httpParams = httpParams.set('sport', 'true');
         }
         if (lesen) {
-            // httpParams = httpParams.set('lesen', 'true');
-            httpParams = httpParams.set('interessen', 'L');
+            httpParams = httpParams.set('lesen', 'true');
         }
         if (reisen) {
-            // httpParams = httpParams.set('reisen', 'true');
-            httpParams = httpParams.set('interessen', 'R');
+            httpParams = httpParams.set('reisen', 'true');
         }
         return httpParams;
     }

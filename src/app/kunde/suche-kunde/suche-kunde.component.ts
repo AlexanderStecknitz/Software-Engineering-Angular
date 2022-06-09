@@ -80,7 +80,7 @@ export class SucheKundenComponent implements OnInit {
     #handleFindError(err: FindError) {
         const { statuscode } = err;
         log.debug(
-            `SucheKundenComponent.handleError(): statuscode=${statuscode}`,
+            `SucheKundenComponent.#handleError(): statuscode=${statuscode}`,
         );
 
         switch (statuscode) {
