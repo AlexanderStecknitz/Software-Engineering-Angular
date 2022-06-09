@@ -19,85 +19,85 @@
 
 ### Login
 // @name login
-POST {{localHTTPS}}/rest/login
+POST {{restUrl}}/rest/login
 Content-Type: application/x-www-form-urlencoded
 
 username=admin&password=p
 
-### Suche alle Buecher
-GET {{localHTTPS}}/rest/buecher
+### Suche alle Kunden
+GET {{restUrl}}/rest/kunden
 
-### Suche mit vorhandener Buch-ID
-GET {{localHTTPS}}/buecher/00000000-0000-0000-0000-000000000001
+### Suche mit vorhandener Kunde-ID
+GET {{restUrl}}/kunden/00000000-0000-0000-0000-000000000001
 
-### Suche mit vorhandener Buch-ID und Versionsnummer
-GET {{localHTTPS}}/buecher/00000000-0000-0000-0000-000000000001
+### Suche mit vorhandener Kunde-ID und Versionsnummer
+GET {{restUrl}}/kunden/00000000-0000-0000-0000-000000000001
 If-None-Match: 0
 
-### Optionen zu Buch-ID
-OPTIONS {{localHTTPS}}/rest/buecher/00000000-0000-0000-0000-000000000001
+### Optionen zu Kunde-ID
+OPTIONS {{restUrl}}/rest/kunden/00000000-0000-0000-0000-000000000001
 
-### Suche mit ungueltiger Buch-ID
-GET {{localHTTPS}}/rest/buecher/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY
+### Suche mit ungueltiger Kunde-ID
+GET {{restUrl}}/rest/kunden/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY
 
-### Suche mit nicht-vorhandener Buch-ID
-GET {{localHTTPS}}/rest/buecher/99999999-9999-9999-9999-999999999999
+### Suche mit nicht-vorhandener Kunde-ID
+GET {{restUrl}}/rest/kunden/99999999-9999-9999-9999-999999999999
 
-### Suche mit vorhandenem Titel
-GET {{localHTTPS}}/rest/buecher?titel=a
+### Suche mit vorhandenem Kunde
+GET {{restUrl}}/rest/kunden?kunde=a
 
-### Suche mit vorhandener ISBN-Nummber
-GET {{localHTTPS}}/rest/buecher?isbn=000-0-00000-000-1
+### Suche mit vorhandener Email-Adresse
+GET {{restUrl}}/rest/kunden?email=phi@acme.cn
 
-### Suche mit vorhandenen Schlagwoertern
-GET {{localHTTPS}}/rest/buecher?javascript=true&typescript=true
+### Suche mit vorhandenen Interessenn
+GET {{restUrl}}/rest/kunden?lesen=true&reisen=true
 
-### Suche mit gueltiger Buchart
-GET {{localHTTPS}}/rest/buecher?art=KINDLE
+### Suche mit gueltigen Geschlecht
+GET {{restUrl}}/rest/kunden?geschlecht=WEIBLICH
 
-### Suche mit gueltigem Rating
-GET {{localHTTPS}}/rest/buecher?rating=1
+### Suche mit gueltiger Kategorie
+GET {{restUrl}}/rest/kunden?kategorie=1
 
-### Suche lieferbare Buecher
-GET {{localHTTPS}}/rest/buecher?lieferbar=true
+### Suche newslettere Kunden
+GET {{restUrl}}/rest/kunden?newsletter=true
 
-### Neues Buch anlegen
-POST {{localHTTPS}}/rest/buecher
+### Neuen Kunden anlegen
+POST {{restUrl}}/rest/kunden
 Content-Type: application/json
 Authorization: Bearer {{login.response.body.$.token}}
 
-< ./buch-neu.json
+< ./kunde-neu.json
 
-### Neues Buch mit ungueltigen Daten anlegen
-POST {{localHTTPS}}/rest/buecher
+### Neuen Kunden mit ungueltigen Daten anlegen
+POST {{restUrl}}/rest/kunden
 Content-Type: application/json
 Authorization: Bearer {{login.response.body.$.token}}
 
-< ./buch-neu-invalid.json
+< ./kunde-neu-invalid.json
 
-### Vorhandenes Buch aktualisieren
-PUT {{localHTTPS}}/rest/buecher/00000000-0000-0000-0000-000000000003
-Content-Type: application/json
-Authorization: Bearer {{login.response.body.$.token}}
-If-Match: 0
-
-< ./buch-3-put.json
-
-### Vorhandenes Buch *OHNE* Versionsnummer aktualisieren
-PUT {{localHTTPS}}/rest/buecher/00000000-0000-0000-0000-000000000003
-Content-Type: application/json
-Authorization: Bearer {{login.response.body.$.token}}
-
-< ./buch-3-put.json
-
-### Vorhandenes Buch mit ungueltigen Daten aktualisieren
-PUT {{localHTTPS}}/rest/buecher/00000000-0000-0000-0000-000000000003
+### Vorhandenen Kunden aktualisieren
+PUT {{restUrl}}/rest/kunden/00000000-0000-0000-0000-000000000003
 Content-Type: application/json
 Authorization: Bearer {{login.response.body.$.token}}
 If-Match: 0
 
-< ./buch-3-put-invalid.json
+< ./kunde-3-put.json
 
-### Loeschen eines vorhandenen Buches
-DELETE {{localHTTPS}}/rest/buecher/00000000-0000-0000-0000-000000000005
+### Vorhandenen Kunden *OHNE* Versionsnummer aktualisieren
+PUT {{restUrl}}/rest/kunden/00000000-0000-0000-0000-000000000003
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.$.token}}
+
+< ./kunde-3-put.json
+
+### Vorhandenen Kunden mit ungueltigen Daten aktualisieren
+PUT {{restUrl}}/rest/kunden/00000000-0000-0000-0000-000000000003
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.$.token}}
+If-Match: 0
+
+< ./kunde-3-put-invalid.json
+
+### Loeschen eines vorhandenen Kunden
+DELETE {{restUrl}}/rest/kunden/00000000-0000-0000-0000-000000000005
 Authorization: Bearer {{login.response.body.$.token}}

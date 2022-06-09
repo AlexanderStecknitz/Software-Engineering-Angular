@@ -28,7 +28,7 @@
 # https://console.cloud.google.com/gcr/images/paketo-buildpacks/GLOBAL/nginx
 
 # [project]
-id = "com.acme.buchweb"
+id = "com.acme.kundeweb"
 name = "Web Frontend fuer Microservice kunde"
 version = "1.0.0"
 authors = ["Juergen.Zimmermann@h-ka.de"]
