@@ -1,0 +1,103 @@
+// Copyright (C) 2020 - present Juergen Zimmermann, Hochschule Karlsruhe
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+//
+// N e t z w e r k   -  V e r b i n d u n g   n o t w e n d i g
+//
+
+### Login
+// @name login
+POST {{restUrl}}/rest/login
+Content-Type: application/x-www-form-urlencoded
+
+username=admin&password=p
+
+### Suche alle Kunden
+GET {{restUrl}}/rest/kunden
+
+### Suche mit vorhandener Kunde-ID
+GET {{restUrl}}/kunden/00000000-0000-0000-0000-000000000001
+
+### Suche mit vorhandener Kunde-ID und Versionsnummer
+GET {{restUrl}}/kunden/00000000-0000-0000-0000-000000000001
+If-None-Match: 0
+
+### Optionen zu Kunde-ID
+OPTIONS {{restUrl}}/rest/kunden/00000000-0000-0000-0000-000000000001
+
+### Suche mit ungueltiger Kunde-ID
+GET {{restUrl}}/rest/kunden/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY
+
+### Suche mit nicht-vorhandener Kunde-ID
+GET {{restUrl}}/rest/kunden/99999999-9999-9999-9999-999999999999
+
+### Suche mit vorhandenem Kunde
+GET {{restUrl}}/rest/kunden?kunde=a
+
+### Suche mit vorhandener Email-Adresse
+GET {{restUrl}}/rest/kunden?email=phi@acme.cn
+
+### Suche mit vorhandenen Interessenn
+GET {{restUrl}}/rest/kunden?lesen=true&reisen=true
+
+### Suche mit gueltigen Geschlecht
+GET {{restUrl}}/rest/kunden?geschlecht=WEIBLICH
+
+### Suche mit gueltiger Kategorie
+GET {{restUrl}}/rest/kunden?kategorie=1
+
+### Suche newslettere Kunden
+GET {{restUrl}}/rest/kunden?newsletter=true
+
+### Neuen Kunden anlegen
+POST {{restUrl}}/rest/kunden
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.$.token}}
+
+< ./kunde-neu.json
+
+### Neuen Kunden mit ungueltigen Daten anlegen
+POST {{restUrl}}/rest/kunden
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.$.token}}
+
+< ./kunde-neu-invalid.json
+
+### Vorhandenen Kunden aktualisieren
+PUT {{restUrl}}/rest/kunden/00000000-0000-0000-0000-000000000003
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.$.token}}
+If-Match: 0
+
+< ./kunde-3-put.json
+
+### Vorhandenen Kunden *OHNE* Versionsnummer aktualisieren
+PUT {{restUrl}}/rest/kunden/00000000-0000-0000-0000-000000000003
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.$.token}}
+
+< ./kunde-3-put.json
+
+### Vorhandenen Kunden mit ungueltigen Daten aktualisieren
+PUT {{restUrl}}/rest/kunden/00000000-0000-0000-0000-000000000003
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.$.token}}
+If-Match: 0
+
+< ./kunde-3-put-invalid.json
+
+### Loeschen eines vorhandenen Kunden
+DELETE {{restUrl}}/rest/kunden/00000000-0000-0000-0000-000000000005
+Authorization: Bearer {{login.response.body.$.token}}
