@@ -14,51 +14,75 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<div class="box-create">
-  <mat-grid-list cols="1" rowHeight="100px">
-    <form (submit)="onSubmit()" role="form">
-      <mat-grid-tile><h2>Anlegen eines Kunden</h2></mat-grid-tile>
-      <!-- Forms go in here -->
-      <mat-grid-tile>
-        <hs-create-nachname class="element-create"></hs-create-nachname>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <hs-create-email class="element-create"></hs-create-email>
-      </mat-grid-tile>
-      <mat-grid-tile>
+<!-- dynamisches Formular durch formGroup -->
+<form [formGroup]="createForm" role="form">
+  <!-- Todo Implement FontAwesome icon for warning symbol -->
+  <mat-card *ngIf="showWarning" class="warning-box">
+    <mat-card-title>
+      Achtung!
+    </mat-card-title>
+    <br>
+    Wenn Sie die Seite jetzt verlassen, verlieren Sie Ihre eingegebenen Daten.
+  </mat-card>
+
+  <div class="box-create">
+    <mat-grid-list cols="1" rowHeight="100px">
+      <form (submit)="onSubmit()" role="form">
+        <mat-grid-tile><h2>Anlegen eines Kunden</h2></mat-grid-tile>
+        <!-- Forms go in here -->
+        <mat-grid-tile>
+          <hs-create-nachname class="element-create"></hs-create-nachname>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <hs-create-email class="element-create"></hs-create-email>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div class="split-section">
+            <hs-create-geburtsdatum class="element-create"></hs-create-geburtsdatum>
+            <hs-create-geschlecht class="element-create"></hs-create-geschlecht>
+            <hs-create-familienstand class="element-create"></hs-create-familienstand>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
         <div class="split-section">
-          <hs-create-geburtsdatum class="element-create"></hs-create-geburtsdatum>
-          <hs-create-geschlecht class="element-create"></hs-create-geschlecht>
-          <hs-create-familienstand class="element-create"></hs-create-familienstand>
-        </div>
-      </mat-grid-tile>
-      <mat-grid-tile>
-      <div class="split-section">
-        <hs-create-plz class="element-create"></hs-create-plz>
-        <hs-create-ort class="element-create"></hs-create-ort>
-      </div>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <hs-create-kategorie class="element-create"></hs-create-kategorie>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <div class="split-section">
-          <hs-create-umsatz class="element-create"></hs-create-umsatz>
-          <hs-create-waehrung class="element-create"></hs-create-waehrung>
+          <hs-create-plz class="element-create"></hs-create-plz>
+          <hs-create-ort class="element-create"></hs-create-ort>
         </div>
         </mat-grid-tile>
-      <mat-grid-tile>
-        <hs-create-interessen class="element-create"></hs-create-interessen>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <hs-create-newsletter class="element-create"></hs-create-newsletter>
-      </mat-grid-tile>
-      <!-- Forms end here -->
-      <mat-grid-tile>
-        <button mat-raised-button color="primary" matTooltip="Hier drücken um Kunden anzulegen">
-          Kunde anlegen
-        </button>
-      </mat-grid-tile>
-    </form>
-  </mat-grid-list>
+        <mat-grid-tile>
+          <hs-create-kategorie class="element-create"></hs-create-kategorie>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div class="split-section">
+            <hs-create-umsatz class="element-create"></hs-create-umsatz>
+            <hs-create-waehrung class="element-create"></hs-create-waehrung>
+          </div>
+          </mat-grid-tile>
+        <mat-grid-tile>
+          <hs-create-interessen class="element-create"></hs-create-interessen>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <hs-create-newsletter class="element-create"></hs-create-newsletter>
+        </mat-grid-tile>
+        <!-- Forms end here -->
+        <mat-grid-tile>
+          <button 
+          mat-raised-button 
+          color="primary" 
+          matTooltip="Hier drücken um Kunden anzulegen"
+          type="submit"
+          (click)="onSubmit()"
+          [disabled]="createForm.invalid">
+            Kunde anlegen
+          </button>
+        </mat-grid-tile>
+      </form>
+    </mat-grid-list>
+  </div>
+
+</form>
+
+<!-- Todo update Legacy error message to angular -->
+<div class="mt-3">
+  <hs-error-message [text]="errorMsg"></hs-error-message>
 </div>

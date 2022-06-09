@@ -1,5 +1,6 @@
 import { RouterModule, type Routes } from '@angular/router';
 import { CreateKundeComponent } from './create-kunde/create-kunde.component';
+import { CreateKundeGuard } from './create-kunde/create-kunde.guard';
 import { KundeModule } from './kunde.module';
 import { NgModule } from '@angular/core';
 import { SucheKundenComponent } from './suche-kunde/suche-kunde.component';
@@ -12,6 +13,7 @@ const routes: Routes = [
     {
         path: 'create',
         component: CreateKundeComponent,
+        canDeactivate: [CreateKundeGuard],
     },
 ];
 

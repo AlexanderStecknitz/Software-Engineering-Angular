@@ -32,6 +32,7 @@ import { CreatePlzComponent } from './create-plz.component';
 import { CreateUmsatzComponent } from './create-umsatz.component';
 import { CreateWaehrungComponent } from './create-waehrung.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -57,6 +58,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
             useFactory: adapterFactory,
         }),
         MatButtonModule,
+        MatCardModule,
         MatCheckboxModule,
         MatDatepickerModule,
         MatFormFieldModule,
