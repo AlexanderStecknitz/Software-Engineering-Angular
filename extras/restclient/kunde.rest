@@ -17,6 +17,8 @@
 // N e t z w e r k   -  V e r b i n d u n g   n o t w e n d i g
 //
 
+@restUrl = "https://localhost:8080"
+
 ### Login
 // @name login
 POST {{restUrl}}/rest/login
