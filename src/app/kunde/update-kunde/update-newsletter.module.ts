@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
+ * Copyright (C) 2019 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,25 +15,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { Component } from '@angular/core';
-import log from 'loglevel';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
-/**
- * Komponente f&uuml;r den Hauptteil einer Seite mit dem Tag &lt;hs-main&gt;.
- */
-@Component({
-    selector: 'hs-main',
-    // router-outlet: Komponente fuer das Routing, d.h.
-    // Platzhalter fuer den Austausch der HTML-Templates (= Fragmente)
-    // beim Routing
-    template: `
-        <main>
-            <router-outlet></router-outlet>
-        </main>
-    `,
+import { UpdateNewsletterComponent } from './update-newsletter.component';
+
+@NgModule({
+    declarations: [UpdateNewsletterComponent],
+    exports: [UpdateNewsletterComponent],
+    imports: [CommonModule, ReactiveFormsModule],
 })
-export class MainComponent {
-    constructor() {
-        log.debug('MainComponent.constructor()');
-    }
-}
+export class UpdateNewsletterModule {}
