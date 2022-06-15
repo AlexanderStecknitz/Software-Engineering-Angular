@@ -24,44 +24,60 @@
 >
   <div class="box">
     <button 
-    mat-raised-button 
-    color="accent"
-    type="submit">
-      Logout
+          mat-raised-button 
+          color="accent"
+          type="submit">
+    Logout
     </button>
   </div>
 </form>
 
+
 <ng-template #login>
   <form
-  autocomplete="off"
-  role="form"
-  (submit)="onLogin()"
+      autocomplete="off"
+      role="form"
+      (submit)="onLogin()"
   >
   <div class="flex-box">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Benutzername</mat-label>
-      <input matInput placeholder="Mustermaster9000" />
+      <input 
+          matInput 
+          required
+          placeholder="Mustermaster9000" 
+          [(ngModel)] = "username"
+          name="username"
+          />
     </mat-form-field>
+
     <mat-form-field appearance="fill">
       <mat-label>Enter your password</mat-label>
-      <input matInput [type]="hide ? 'password' : 'text'" />
+      <input 
+          matInput [type]="hide ? 'password' : 'text'" 
+          [(ngModel)] = "password"
+          required
+          name="password"
+      />
+
       <button
-        mat-icon-button
-        matSuffix
-        (click)="hide = !hide"
-        [attr.aria-label]="'Hide password'"
-        [attr.aria-pressed]="hide"
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
       >
-        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
       </button>
     </mat-form-field>
+
     <button 
-    mat-raised-button 
-    color="accent"
-    type="submit">
-      Login
+        mat-raised-button 
+        color="accent"
+        type="submit">
+    Login
     </button>
+
   </div>
   </form>
 </ng-template>
