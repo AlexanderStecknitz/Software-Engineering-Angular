@@ -25,4 +25,4 @@ import { Component } from '@angular/core';
     selector: 'hs-update-nachname',
     templateUrl: './update-nachname.component.html',
 })
-export class UpdateTitelComponent {}
+export class UpdateNachnameComponent {}
