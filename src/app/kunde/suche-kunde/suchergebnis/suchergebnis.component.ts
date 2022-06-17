@@ -41,5 +41,6 @@ export class SuchergebnisComponent {
 
     constructor() {
         log.debug('SuchergebnisComponent.constructor()');
+        log.debug('Kunden: ', this.kunden);
     }
 }

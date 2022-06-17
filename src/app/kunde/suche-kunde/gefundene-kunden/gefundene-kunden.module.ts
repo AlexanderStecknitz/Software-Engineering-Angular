@@ -16,11 +16,15 @@
  */
 
 import { GefundeneKundenComponent } from './gefundene-kunden.component';
+// eslint-disable-next-line import/no-unresolved
+import { MatCardModule } from '@angular/material/card';
+// eslint-disable-next-line import/no-unresolved
+import { MatTableModule } from '@angular/material/table';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../../../shared/shared.module';
 
 @NgModule({
-    imports: [SharedModule],
+    imports: [MatCardModule, MatTableModule, SharedModule],
     declarations: [GefundeneKundenComponent],
     exports: [GefundeneKundenComponent],
 })
