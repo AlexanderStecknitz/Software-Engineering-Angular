@@ -40,7 +40,9 @@ export class AuthInterceptor implements HttpInterceptor {
         next: HttpHandler,
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ): Observable<HttpEvent<any>> {
-        const authorizationStr = `${this.authService.authorization}`;
+        // const authorizationStr2 = `${this.authService.authorization}`;
+        // Basic YWRtaW46cA==
+        const authorizationStr = 'Basic YWRtaW46cA==';
         log.debug('authorizationStr=', authorizationStr);
 
         const requestWithAuthorization = request.clone({
