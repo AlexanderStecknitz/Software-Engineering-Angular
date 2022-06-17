@@ -28,7 +28,7 @@ import log from 'loglevel';
 
 @Injectable({ providedIn: 'root' })
 export class StorageService {
-    private static readonly AUTHORIZATION = 'authorization';
+    private static readonly AUTHORIZATION = 'Basic YWRtaW46cA==';
 
     private static readonly ROLES = 'roles';
 

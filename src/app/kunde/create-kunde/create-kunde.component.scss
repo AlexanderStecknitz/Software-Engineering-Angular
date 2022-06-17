@@ -43,7 +43,7 @@
 
 .split-section {
   display: flex;
-  align-content: center;
+  align-content: left;
   align-items: center;
   width: 50%;
   gap: 10px;
@@ -52,4 +52,5 @@
 .warning-box {
   width: 80%;
   margin: auto;
+  padding-top: 25px;
 }

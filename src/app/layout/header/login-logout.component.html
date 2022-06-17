@@ -14,29 +14,73 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<div class="box">
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Benutzername</mat-label>
-    <input matInput placeholder="Mustermaster9000" />
-  </mat-form-field>
+  <!-- Login/Logout Button-->
+
+<form
+  autocomplete="off"
+  role="form"
+  (submit)="onLogout()"
+  *ngIf="(isLoggedIn$ | async) || init; else login"
+>
   <div class="box">
+    <button 
+          mat-raised-button 
+          color="accent"
+          type="submit">
+    Logout
+    </button>
+  </div>
+</form>
+
+
+<ng-template #login>
+  <form
+      autocomplete="off"
+      role="form"
+      (submit)="onLogin()"
+  >
+  <div class="flex-box">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Benutzername</mat-label>
+      <input 
+          matInput 
+          required
+          placeholder="Mustermaster9000" 
+          [(ngModel)] = "username"
+          name="username"
+          />
+    </mat-form-field>
+
     <mat-form-field appearance="fill">
       <mat-label>Enter your password</mat-label>
-      <input matInput [type]="hide ? 'password' : 'text'" />
+      <input 
+          matInput [type]="hide ? 'password' : 'text'" 
+          [(ngModel)] = "password"
+          required
+          name="password"
+      />
+
       <button
-        mat-icon-button
-        matSuffix
-        (click)="hide = !hide"
-        [attr.aria-label]="'Hide password'"
-        [attr.aria-pressed]="hide"
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
       >
-        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
       </button>
     </mat-form-field>
+
+    <button 
+        mat-raised-button 
+        color="accent"
+        type="submit">
+    Login
+    </button>
+
   </div>
-  <div class="box">
-    <button mat-raised-button color="primary">Login</button>
-  </div>
+  </form>
+</ng-template>
 
   <!-- Inline form https://v5.getbootstrap.com/docs/5.0/forms/layout/#inline-forms -->
   <!-- prettier-ignore -->
@@ -107,4 +151,4 @@
     </div>
   </form>
 </ng-template>
---></div>
+-->

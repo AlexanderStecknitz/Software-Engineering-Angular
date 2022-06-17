@@ -17,13 +17,16 @@
 <!-- dynamisches Formular durch formGroup -->
 <form [formGroup]="createForm" role="form">
   <!-- Todo Implement FontAwesome icon for warning symbol -->
-  <mat-card *ngIf="showWarning" class="warning-box">
-    <mat-card-title>
-      Achtung!
-    </mat-card-title>
-    <br>
-    Wenn Sie die Seite jetzt verlassen, verlieren Sie Ihre eingegebenen Daten.
-  </mat-card>
+  <div class="warning-box" *ngIf="showWarning">
+    <mat-card>
+      <mat-card-title>
+        Achtung!
+      </mat-card-title>
+      <br>
+      Wenn Sie die Seite jetzt verlassen, verlieren Sie Ihre eingegebenen Daten.
+    </mat-card>
+  </div>
+
 
   <div class="box-create">
     <mat-grid-list cols="1" rowHeight="100px">
@@ -40,6 +43,11 @@
           <div class="split-section">
             <hs-create-geburtsdatum class="element-create"></hs-create-geburtsdatum>
             <hs-create-geschlecht class="element-create"></hs-create-geschlecht>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div class="split-section">
+            <hs-create-kategorie class="element-create"></hs-create-kategorie>
             <hs-create-familienstand class="element-create"></hs-create-familienstand>
           </div>
         </mat-grid-tile>
@@ -48,9 +56,6 @@
           <hs-create-plz class="element-create"></hs-create-plz>
           <hs-create-ort class="element-create"></hs-create-ort>
         </div>
-        </mat-grid-tile>
-        <mat-grid-tile>
-          <hs-create-kategorie class="element-create"></hs-create-kategorie>
         </mat-grid-tile>
         <mat-grid-tile>
           <div class="split-section">
@@ -83,6 +88,6 @@
 </form>
 
 <!-- Todo update Legacy error message to angular -->
-<div class="mt-3">
+<div>
   <hs-error-message [text]="errorMsg"></hs-error-message>
 </div>

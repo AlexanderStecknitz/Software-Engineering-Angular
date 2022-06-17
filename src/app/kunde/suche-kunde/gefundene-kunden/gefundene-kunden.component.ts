@@ -20,6 +20,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-gefundene-kunden',
     templateUrl: './gefundene-kunden.component.html',
+    styleUrls: ['./gefundene-kunden.component.scss'],
     animations: [easeIn, easeOut],
 })
 export class GefundeneKundenComponent implements OnInit {
@@ -35,6 +36,14 @@ export class GefundeneKundenComponent implements OnInit {
 
     // nachtraegliches Einloggen mit der Rolle "admin" beobachten
     isAdmin$ = new Subject<boolean>();
+
+    displayedColumns: string[] = [
+        'nachname',
+        'familienstand',
+        'geschlecht',
+        'interessen',
+        'update',
+    ];
 
     // Parameter Properties (Empfehlung: Konstruktor nur fuer DI)
     // eslint-disable-next-line max-params
