@@ -1,11 +1,11 @@
 <section class="interessen-section">
-  <mat-checkbox class="interessen-margin" [(ngModel)]="sport"
+  <mat-checkbox class="interessen-margin" [(ngModel)]="sport" (change)="onChangeSport($event)"
     >Sport</mat-checkbox
   >
-  <mat-checkbox class="interessen-margin" [(ngModel)]="reisen"
+  <mat-checkbox class="interessen-margin" [(ngModel)]="reisen" (change)="onChangeReisen($event)"
     >Reisen</mat-checkbox
   >
-  <mat-checkbox class="interessen-margin" [(ngModel)]="lesen"
+  <mat-checkbox class="interessen-margin" [(ngModel)]="lesen" (change)="onChangeLesen($event)"
     >Lesen</mat-checkbox
   >
 </section>
