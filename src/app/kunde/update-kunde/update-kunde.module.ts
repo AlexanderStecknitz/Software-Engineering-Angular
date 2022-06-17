@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { UpdateKundeComponent } from './update-kunde.component';
-import { UpdateTitelModule } from './update-titel.module';
+import { UpdateNachnameModule } from './update-nachname.module';
 
 @NgModule({
-    imports: [UpdateTitelModule],
+    imports: [UpdateNachnameModule],
     declarations: [UpdateKundeComponent],
     exports: [UpdateKundeComponent],
 })
