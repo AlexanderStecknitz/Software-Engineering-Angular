@@ -42,6 +42,7 @@ export class GefundeneKundenComponent implements OnInit {
         'familienstand',
         'geschlecht',
         'interessen',
+        'update',
     ];
 
     // Parameter Properties (Empfehlung: Konstruktor nur fuer DI)
