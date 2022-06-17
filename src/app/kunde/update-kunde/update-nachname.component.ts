@@ -22,7 +22,7 @@ import { Component } from '@angular/core';
  */
 @Component({
     // moduleId: module.id,
-    selector: 'hs-update-titel',
+    selector: 'hs-update-nachname',
     templateUrl: './update-nachname.component.html',
 })
 export class UpdateTitelComponent {}
