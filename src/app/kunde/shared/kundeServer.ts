@@ -110,8 +110,9 @@ export const toKunde = (kundeServer: KundeServer, etag?: string) => {
     }
 
     const kunde: Kunde = {
-        nachname: nachname ?? 'unbekannt',
-        email: email ?? 'unbekannt',
+        id,
+        nachname,
+        email,
         kategorie,
         newsletter,
         geschlecht,
