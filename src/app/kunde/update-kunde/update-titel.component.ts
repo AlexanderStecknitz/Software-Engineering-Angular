@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 - present Juergen Zimmermann, Hochschule Karlsruhe
+ * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,12 +15,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// import { DetailsKundeModule } from './details-kunde/details-kunde.module';
-import { CreateKundeModule } from './create-kunde/create-kunde.module';
-import { NgModule } from '@angular/core';
-import { SucheKundeModule } from './suche-kunde/suche-kunde.module';
-import { UpdateKundeModule } from './update-kunde/update-kunde.module';
-// import { UpdateKundeModule } from './update-kunde/update-kunde.module';
-
-@NgModule({ imports: [CreateKundeModule, SucheKundeModule, UpdateKundeModule] })
-export class KundeModule {}
+import { Component } from '@angular/core';
+/**
+ * Komponente mit dem Tag &lt;hs-create-titel&gt;, um das Erfassungsformular
+ * f&uuml;r ein neues Buch zu realisieren.
+ */
+@Component({
+    // moduleId: module.id,
+    selector: 'hs-update-titel',
+    templateUrl: './update-titel.component.html',
+})
+export class UpdateTitelComponent {}
