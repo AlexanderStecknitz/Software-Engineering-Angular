@@ -17,6 +17,8 @@
 
 import { GefundeneKundenComponent } from './gefundene-kunden.component';
 // eslint-disable-next-line import/no-unresolved
+import {MatButtonModule} from '@angular/material/button';
+// eslint-disable-next-line import/no-unresolved
 import { MatCardModule } from '@angular/material/card';
 // eslint-disable-next-line import/no-unresolved
 import { MatIconModule } from '@angular/material/icon';
@@ -26,7 +28,13 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '../../../shared/shared.module';
 
 @NgModule({
-    imports: [MatCardModule, MatIconModule, MatTableModule, SharedModule],
+    imports: [
+        MatButtonModule,
+        MatCardModule,
+        MatIconModule,
+        MatTableModule,
+        SharedModule,
+    ],
     declarations: [GefundeneKundenComponent],
     exports: [GefundeneKundenComponent],
 })

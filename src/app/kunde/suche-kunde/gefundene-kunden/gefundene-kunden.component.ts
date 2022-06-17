@@ -88,8 +88,8 @@ export class GefundeneKundenComponent implements OnInit {
 
         // URL mit der Kunde-ID, um ein Bookmark zu ermoeglichen
         // Gefundenes Kunde als NavigationExtras im Router puffern
-        const state = { kunde };
-        return this.router.navigate([`/kunden/${kunde.id}`], { state });
+
+        return this.router.navigate([`/kunde/update/${kunde.id}`]);
     }
 
     /**
