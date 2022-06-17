@@ -33,7 +33,7 @@ export class UpdateInteressenComponent implements OnInit {
     updateForm!: FormGroup;
 
     @Input()
-    currentValue!: InteresseType | undefined;
+    currentValue!: Set<InteresseType> | undefined;
 
     interessen!: FormControl;
 
