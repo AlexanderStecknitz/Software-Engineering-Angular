@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
+ * Copyright (C) 2018 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,14 +15,40 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { Component } from '@angular/core';
+import { Component, Input, type OnInit } from '@angular/core';
+import { FormControl, type FormGroup, Validators } from '@angular/forms';
+import log from 'loglevel';
+
 /**
- * Komponente mit dem Tag &lt;hs-create-titel&gt;, um das Erfassungsformular
- * f&uuml;r ein neues Buch zu realisieren.
+ * Komponente f&uuml;r das Tag <code>hs-update-nachname</code>
  */
 @Component({
-    // moduleId: module.id,
     selector: 'hs-update-nachname',
     templateUrl: './update-nachname.component.html',
 })
-export class UpdateNachnameComponent {}
+export class UpdateNachnameComponent implements OnInit {
+    private static readonly MIN_LENGTH = 2;
+
+    // <hs-update-nachname [form]="form" [currentValue]="...">
+    @Input()
+    form!: FormGroup;
+
+    @Input()
+    currentValue!: string;
+
+    nachname!: FormControl;
+
+    ngOnInit() {
+        log.debug(
+            'UpdateNachnameComponent.ngOnInit: currentValue=',
+            this.currentValue,
+        );
+        // siehe formControlName innerhalb @Component({templateUrl: ...})
+        this.nachname = new FormControl(this.currentValue, [
+            Validators.required,
+            Validators.minLength(UpdateNachnameComponent.MIN_LENGTH),
+            Validators.pattern(/^\w/u),
+        ]);
+        this.form.addControl('nachname', this.nachname);
+    }
+}

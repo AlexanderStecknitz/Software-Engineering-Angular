@@ -15,6 +15,14 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<mat-form-field appearance="outline">
-    <input matInput>
-</mat-form-field>
+<mat-form-field appearance="outline" class="userInputField">
+    <mat-label>Nachname</mat-label>
+    <input
+      matInput
+      placeholder="Nachname"
+      [(ngModel)]="nachname"
+      autocomplete="off"
+    />    
+    <mat-hint>Bitte den Nachnamen eingeben</mat-hint>
+  </mat-form-field>
+  
