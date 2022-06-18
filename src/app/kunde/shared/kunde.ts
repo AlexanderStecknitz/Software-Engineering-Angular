@@ -13,13 +13,11 @@ export type Familienstand =
 export type InteresseType = 'LESEN' | 'REISEN' | 'SPORT';
 
 export interface Umsatz {
-    id?: string;
     betrag: bigint;
     waehrung: string;
 }
 
 export interface Adresse {
-    id?: string;
     plz: string;
     ort: string;
 }
@@ -37,7 +35,7 @@ export interface Kunde {
     familienstand: Familienstand | undefined;
     interessen: Set<InteresseType> | undefined;
     umsatz: Umsatz | undefined;
-    postleitzahl: Adresse;
+    adresse: Adresse;
     username: string;
 }
 
@@ -46,6 +44,6 @@ export interface KundeShared {
     email: string;
     kategorie: number;
     newsletter: boolean;
-    postleitzahl: Adresse;
+    adresse: Adresse;
     username: string;
 }
