@@ -38,7 +38,7 @@ export class CreateWaehrungComponent implements OnInit {
     //    serverseitig mittels Request/Response
     //    clientseitig bei den Ereignissen keyup, change, blur, ...
     // Ein Endbenutzer bewirkt staendig einen neuen Fehlerstatus
-    readonly waehrung = new FormControl('WAEHRUNG', Validators.required);
+    readonly waehrung = new FormControl(undefined, Validators.required);
 
     ngOnInit() {
         log.debug('CreateWaehrungComponent.ngOnInit');
