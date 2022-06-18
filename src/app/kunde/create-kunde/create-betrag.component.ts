@@ -25,11 +25,11 @@ import log from 'loglevel';
  */
 @Component({
     // moduleId: module.id,
-    selector: 'hs-create-umsatz',
-    templateUrl: './create-umsatz.component.html',
+    selector: 'hs-create-betrag',
+    templateUrl: './create-betrag.component.html',
     styleUrls: ['./create-kunde.component.scss'],
 })
-export class CreateUmsatzComponent implements OnInit {
+export class CreateBetragComponent implements OnInit {
     @Input()
     createForm!: FormGroup;
 
@@ -38,11 +38,11 @@ export class CreateUmsatzComponent implements OnInit {
     //    serverseitig mittels Request/Response
     //    clientseitig bei den Ereignissen keyup, change, blur, ...
     // Ein Endbenutzer bewirkt staendig einen neuen Fehlerstatus
-    readonly umsatz = new FormControl(undefined, Validators.required);
+    readonly betrag = new FormControl(undefined, Validators.required);
 
     ngOnInit() {
-        log.debug('CreateUmsatzComponent.ngOnInit');
+        log.debug('CreateBetragComponent.ngOnInit');
         // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.createForm.addControl('umsatz', this.umsatz);
+        this.createForm.addControl('betrag', this.betrag);
     }
 }

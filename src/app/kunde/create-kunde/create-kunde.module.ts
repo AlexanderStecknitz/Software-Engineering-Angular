@@ -19,6 +19,7 @@
 
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { CommonModule } from '@angular/common';
+import { CreateBetragComponent } from './create-betrag.component';
 import { CreateEmailComponent } from './create-email.component';
 import { CreateFamilienstandComponent } from './create-familienstand.component';
 import { CreateGeburtsdatumComponent } from './create-geburtsdatum.component';
@@ -30,7 +31,6 @@ import { CreateNachnameComponent } from './create-nachname.component';
 import { CreateNewsletterComponent } from './create-newsletter.component';
 import { CreateOrtComponent } from './create-ort.component';
 import { CreatePlzComponent } from './create-plz.component';
-import { CreateUmsatzComponent } from './create-umsatz.component';
 import { CreateWaehrungComponent } from './create-waehrung.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -75,6 +75,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
         SharedModule,
     ],
     declarations: [
+        CreateBetragComponent,
         CreateEmailComponent,
         CreateFamilienstandComponent,
         CreateGeburtsdatumComponent,
@@ -86,7 +87,6 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
         CreateNewsletterComponent,
         CreateOrtComponent,
         CreatePlzComponent,
-        CreateUmsatzComponent,
         CreateWaehrungComponent,
     ],
     providers: [Title],
