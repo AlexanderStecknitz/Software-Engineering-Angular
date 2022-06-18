@@ -1,30 +1,18 @@
 button:hover {
     opacity: 0.5;
   }
-  
-  .interessen-section {
+
+  .updateRoot {
+    margin-top: 20px;
     display: flex;
-    align-content: center;
     align-items: center;
-    height: 60px;
-    //background: red;
-  }
-  
-  .interessen-margin {
-    margin: 0 30px;
-  }
-  
-  .box-create {
-    width: 100%;
-    //background: red;
-  }
-  
-  .element-create {
-    width: 50%;
-    //background: blue;
-  }
-  
-  .userInputField {
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
   }
-  
+
+  .updateInputField {
+    width: 200%;
+    margin: 5px;
+
+  }

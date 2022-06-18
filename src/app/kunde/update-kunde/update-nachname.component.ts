@@ -25,13 +25,14 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-update-nachname',
     templateUrl: './update-nachname.component.html',
+    styleUrls: ['./update.component.scss'],
 })
 export class UpdateNachnameComponent implements OnInit {
     private static readonly MIN_LENGTH = 2;
 
     // <hs-update-nachname [form]="form" [currentValue]="...">
     @Input()
-    form!: FormGroup;
+    updateForm!: FormGroup;
 
     @Input()
     currentValue!: string;
@@ -49,6 +50,6 @@ export class UpdateNachnameComponent implements OnInit {
             Validators.minLength(UpdateNachnameComponent.MIN_LENGTH),
             Validators.pattern(/^\w/u),
         ]);
-        this.form.addControl('nachname', this.nachname);
+        this.updateForm.addControl('nachname', this.nachname);
     }
 }
