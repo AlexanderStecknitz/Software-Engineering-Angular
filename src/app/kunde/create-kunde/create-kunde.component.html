@@ -19,72 +19,105 @@
   <!-- Todo Implement FontAwesome icon for warning symbol -->
   <div class="warning-box" *ngIf="showWarning">
     <mat-card>
-      <mat-card-title>
-        Achtung!
-      </mat-card-title>
-      <br>
+      <mat-card-title> Achtung! </mat-card-title>
+      <br />
       Wenn Sie die Seite jetzt verlassen, verlieren Sie Ihre eingegebenen Daten.
     </mat-card>
   </div>
 
-
-  <div class="box-create">
+  <div class="box-create" formControlName="Kunde">
     <mat-grid-list cols="1" rowHeight="100px">
       <form (submit)="onSubmit()" role="form">
         <mat-grid-tile><h2>Anlegen eines Kunden</h2></mat-grid-tile>
         <!-- Forms go in here -->
         <mat-grid-tile>
-          <hs-create-nachname class="element-create" [createForm]="createForm"></hs-create-nachname>
+          <hs-create-nachname
+            class="element-create"
+            [createForm]="createForm"
+          ></hs-create-nachname>
         </mat-grid-tile>
         <mat-grid-tile>
-          <hs-create-email class="element-create" [createForm]="createForm"></hs-create-email>
+          <hs-create-email
+            class="element-create"
+            [createForm]="createForm"
+          ></hs-create-email>
         </mat-grid-tile>
         <mat-grid-tile>
           <div class="split-section">
-            <hs-create-geburtsdatum class="element-create" [createForm]="createForm"></hs-create-geburtsdatum>
-            <hs-create-geschlecht class="element-create" [createForm]="createForm"></hs-create-geschlecht>
+            <hs-create-geburtsdatum
+              class="element-create"
+              [createForm]="createForm"
+            ></hs-create-geburtsdatum>
+            <hs-create-geschlecht
+              class="element-create"
+              [createForm]="createForm"
+            ></hs-create-geschlecht>
           </div>
         </mat-grid-tile>
         <mat-grid-tile>
           <div class="split-section">
-            <hs-create-kategorie class="element-create" [createForm]="createForm"></hs-create-kategorie>
-            <hs-create-familienstand class="element-create" [createForm]="createForm"></hs-create-familienstand>
+            <hs-create-kategorie
+              class="element-create"
+              [createForm]="createForm"
+            ></hs-create-kategorie>
+            <hs-create-familienstand
+              class="element-create"
+              [createForm]="createForm"
+            ></hs-create-familienstand>
           </div>
-        </mat-grid-tile>
-        <mat-grid-tile>
-        <div class="split-section">
-          <hs-create-plz class="element-create" [createForm]="createForm"></hs-create-plz>
-          <hs-create-ort class="element-create" [createForm]="createForm"></hs-create-ort>
-        </div>
         </mat-grid-tile>
         <mat-grid-tile>
           <div class="split-section">
-            <hs-create-umsatz class="element-create" [createForm]="createForm"></hs-create-umsatz>
-            <hs-create-waehrung class="element-create" [createForm]="createForm"></hs-create-waehrung>
+            <hs-create-plz
+              class="element-create"
+              [createForm]="createForm"
+            ></hs-create-plz>
+            <hs-create-ort
+              class="element-create"
+              [createForm]="createForm"
+            ></hs-create-ort>
           </div>
-          </mat-grid-tile>
-        <mat-grid-tile>
-          <hs-create-interessen class="element-create" [createForm]="createForm"></hs-create-interessen>
         </mat-grid-tile>
         <mat-grid-tile>
-          <hs-create-newsletter class="element-create" [createForm]="createForm"></hs-create-newsletter>
+          <div class="split-section">
+            <hs-create-umsatz
+              class="element-create"
+              [createForm]="createForm"
+            ></hs-create-umsatz>
+            <hs-create-waehrung
+              class="element-create"
+              [createForm]="createForm"
+            ></hs-create-waehrung>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <hs-create-interessen
+            class="element-create"
+            [createForm]="createForm"
+          ></hs-create-interessen>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <hs-create-newsletter
+            class="element-create"
+            [createForm]="createForm"
+          ></hs-create-newsletter>
         </mat-grid-tile>
         <!-- Forms end here -->
         <mat-grid-tile>
-          <button 
-          mat-raised-button 
-          color="primary" 
-          matTooltip="Hier drücken um Kunden anzulegen"
-          type="submit"
-          (click)="onSubmit()"
-          [disabled]="createForm.invalid">
+          <button
+            mat-raised-button
+            color="primary"
+            matTooltip="Hier drücken um Kunden anzulegen"
+            type="submit"
+            (click)="onSubmit()"
+            [disabled]="createForm.invalid"
+          >
             Kunde anlegen
           </button>
         </mat-grid-tile>
       </form>
     </mat-grid-list>
   </div>
-
 </form>
 
 <!-- Todo update Legacy error message to angular -->

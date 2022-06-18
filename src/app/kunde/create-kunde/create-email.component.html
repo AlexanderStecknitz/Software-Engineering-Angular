@@ -1,9 +1,13 @@
-<mat-form-field appearance="outline" class="userInputField" [formGroup]="createForm">
+<mat-form-field
+  appearance="outline"
+  class="userInputField"
+  [formGroup]="createForm"
+>
   <mat-label>Email</mat-label>
-  <input 
-    matInput 
-    placeholder="Email" 
-    autocomplete="off" 
+  <input
+    matInput
+    placeholder="Email"
+    autocomplete="off"
     [class.is-invalid]="email.invalid && email.touched"
     [class.is-valid]="email.valid && email.touched"
     minlength="2"
