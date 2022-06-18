@@ -43,7 +43,7 @@ export class CreateEmailComponent implements OnInit {
     readonly email = new FormControl(undefined, [
         Validators.required,
         Validators.minLength(CreateEmailComponent.MIN_LENGTH),
-        Validators.pattern(/^[A-Z]\w/u),
+        // Validators.pattern(/^[A-Z]\w/u),
     ]);
 
     ngOnInit() {
