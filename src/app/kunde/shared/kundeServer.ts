@@ -94,7 +94,6 @@ export const toKunde = (kundeServer: KundeServer, etag?: string) => {
         familienstand,
         umsatz,
         interessen,
-        username,
     } = kundeServer;
 
     let datumTemporal: Temporal.PlainDate | undefined;
@@ -122,7 +121,6 @@ export const toKunde = (kundeServer: KundeServer, etag?: string) => {
         familienstand,
         umsatz,
         interessen,
-        username,
         version,
     };
     log.debug('Kunde.fromServer: kunde=', kunde);
@@ -151,6 +149,5 @@ export const toKundeServer = (kunde: Kunde): KundeServer => {
         familienstand: kunde.familienstand,
         umsatz: kunde.umsatz,
         interessen: kunde.interessen,
-        username: kunde.username,
     };
 };

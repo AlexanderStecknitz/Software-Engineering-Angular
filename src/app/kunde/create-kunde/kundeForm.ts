@@ -61,7 +61,6 @@ export const toKunde = (kundeForm: KundeForm) => {
         familienstand,
         umsatz,
         interessen,
-        username,
     } = kundeForm;
 
     const datumTemporal = new Temporal.PlainDate(
@@ -83,7 +82,6 @@ export const toKunde = (kundeForm: KundeForm) => {
         familienstand,
         umsatz,
         interessen,
-        username,
         version: 0,
     };
     log.debug('toKunde: kunde=', kunde);

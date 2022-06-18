@@ -36,7 +36,6 @@ export interface Kunde {
     interessen: Set<InteresseType> | undefined;
     umsatz: Umsatz | undefined;
     adresse: Adresse;
-    username: string;
 }
 
 export interface KundeShared {
@@ -45,5 +44,4 @@ export interface KundeShared {
     kategorie: number;
     newsletter: boolean;
     adresse: Adresse;
-    username: string;
 }
