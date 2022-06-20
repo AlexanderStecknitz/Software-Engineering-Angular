@@ -68,8 +68,8 @@ export const toKunde = (kundeForm: KundeForm) => {
         geburtsdatum,
         homepage,
         familienstand,
-        plz = '76149',
-        ort = 'Karlsruhe',
+        plz,
+        ort,
         betrag,
         waehrung,
         sport,
@@ -87,7 +87,6 @@ export const toKunde = (kundeForm: KundeForm) => {
         waehrung,
     };
 
-    // TODO Currently not compatible with create components. Fix.
     const interessen: string[] = [];
     if (sport) {
         interessen.push('S');
