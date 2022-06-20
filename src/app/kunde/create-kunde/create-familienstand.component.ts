@@ -32,7 +32,7 @@ export class CreateFamilienstandComponent implements OnInit {
     @Input()
     createForm!: FormGroup;
 
-    readonly familienstand = new FormControl(undefined);
+    readonly familienstand = new FormControl(undefined, [Validators.required]);
 
     ngOnInit() {
         log.debug('CreateFamilienstandComponent.ngOnInit');

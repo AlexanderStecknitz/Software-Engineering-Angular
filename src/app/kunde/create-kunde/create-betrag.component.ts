@@ -38,7 +38,7 @@ export class CreateBetragComponent implements OnInit {
     //    serverseitig mittels Request/Response
     //    clientseitig bei den Ereignissen keyup, change, blur, ...
     // Ein Endbenutzer bewirkt staendig einen neuen Fehlerstatus
-    readonly betrag = new FormControl(undefined);
+    readonly betrag = new FormControl(undefined, [Validators.required]);
 
     ngOnInit() {
         log.debug('CreateBetragComponent.ngOnInit');
