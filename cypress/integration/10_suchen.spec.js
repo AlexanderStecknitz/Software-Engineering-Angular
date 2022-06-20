@@ -24,11 +24,9 @@ const sucheSelektor = `${navSelektor} ul li a[routerLink="${suchePath}"]`;
 
 // CSS-Selektoren in <main>
 const mainSelektor = 'hs-root hs-main';
-const suchformularSelektor = `${mainSelektor} hs-suche-buecher hs-suchformular`;
+const suchformularSelektor = `${mainSelektor} hs-suche-kunde hs-suchformular`;
 const suchergebnisSelektor = `${mainSelektor} hs-suchergebnis`;
-const gefundeneBuecherSelektor = `${suchergebnisSelektor} hs-gefundene-buecher`;
-const errorSucheSelektor = `${suchergebnisSelektor} hs-error-message div span`;
-const detailsSelektor = `${mainSelektor} hs-details-buch`;
+const gefundeneKundenSelektor = `${suchergebnisSelektor} hs-gefundene-kunden`;
 
 /* global Cypress, cy, describe, it, beforeEach, expect */
 
@@ -59,132 +57,46 @@ describe('Suchen', () => {
         cy.log('Suchseite aufgerufen');
     });
 
-    it('Suchen mit Titel "a"', () => {
+    it('Suchen mit Nachname "a"', () => {
         // Given
-        const titel = 'a';
+        const nachname = 'a';
 
         // When
         cy.get(sucheSelektor).click();
         cy.get(suchformularSelektor).within(() => {
-            cy.get('#titelInput').type(titel);
+            cy.get('#titelInput').type(nachname);
             cy.get('button').click();
         });
 
         // Then
-        cy.get(`${gefundeneBuecherSelektor} tr td:nth-child(3)`).each(
+        cy.get(`${gefundeneKundenSelektor} tr td:nth-child(3)`).each(
             // eslint-disable-next-line arrow-parens
             (elem) => {
-                expect(elem.text()).to.contain(titel);
+                expect(elem.text()).to.contain(nachname);
             },
         );
-        cy.log(`Suchen mit Titel "${titel}": erfolgreich`);
+        cy.log(`Suchen mit Nachname "${nachname}": erfolgreich`);
     });
 
-    it('Suchen mit Verlag "Foo Verlag"', () => {
+    it('Suchen nach Geschlecht "Männlich"', () => {
         // Given
-        const verlag = 'Foo Verlag';
+        const geschlecht = 'M';
 
         // When
         cy.get(sucheSelektor).click();
         cy.get(suchformularSelektor).within(() => {
-            cy.get('hs-suche-verlag select').select(verlag);
+            cy.get('hs-suche-geschlechttype select').select(geschlecht);
             cy.get('button').click();
         });
 
         // Then
         // <span> wegen [ngSwitch]
-        cy.get(`${gefundeneBuecherSelektor} tr td:nth-child(4) span span`).each(
+        cy.get(`${gefundeneKundenSelektor} tr td:nth-child(4) span span`).each(
             // eslint-disable-next-line arrow-parens
             (elem) => {
-                cy.wrap(elem).should('have.text', verlag);
+                cy.wrap(elem).should('have.text', geschlecht);
             },
         );
-        cy.log(`Suchen mit Verlag "${verlag}": erfolgreich`);
-    });
-
-    it('Suchen mit Schlagwort "JavaScript"', () => {
-        // Given
-        const javascript = 'JavaScript';
-
-        // When
-        cy.get(sucheSelektor).click();
-        cy.get(suchformularSelektor).within(() => {
-            // Label zur Checkbox anklicken
-            cy.get('hs-suche-schlagwoerter label').contains(javascript).click();
-            cy.get('button').click();
-        });
-
-        // Then
-        cy.get(
-            `${gefundeneBuecherSelektor} tr td:nth-child(5) span:nth-child(1) span span`,
-        ).each(
-            // eslint-disable-next-line arrow-parens
-            (elem) => {
-                cy.wrap(elem).should('contain', javascript);
-            },
-        );
-        cy.log(`Suchen mit Schlagwort "${javascript}": erfolgreich`);
-    });
-
-    it('Fehlerhafte Suche mit nicht-vorhandenem Titel', () => {
-        // Given
-        const titel = 'xxx';
-
-        // When
-        cy.get(sucheSelektor).click();
-        cy.get(suchformularSelektor).within(() => {
-            cy.get('#titelInput').type(titel);
-            cy.get('button').click();
-        });
-
-        // Then
-        cy.get(errorSucheSelektor).should(
-            'have.text',
-            'Keine Bücher gefunden.',
-        );
-        cy.log(`Suchen mit nicht-vorhandenem Titel "${titel}": erfolgreich`);
-    });
-
-    it('Details zu Buch "00000000-0000-0000-0000-000000000001"', () => {
-        // Given
-        const buchId = '00000000-0000-0000-0000-000000000001';
-
-        // When
-        cy.get(sucheSelektor).click();
-        cy.get(suchformularSelektor).within(() => {
-            cy.get('button').click();
-        });
-        cy.get(`${gefundeneBuecherSelektor} tr td:nth-child(2)`)
-            .contains(buchId)
-            .click();
-
-        // Then
-        cy.get(`${detailsSelektor} h4`).should('have.text', `Buch ${buchId}:`);
-        cy.log(`Details zu ${buchId}: erfolgreich`);
-    });
-
-    it('Details mit "Druckausgabe"', () => {
-        // Given
-        const druckausgabe = 'Druckausgabe';
-
-        // When
-        cy.get(sucheSelektor).click();
-        cy.get(suchformularSelektor).within(() => {
-            cy.get('hs-suche-art label').contains(druckausgabe).click();
-            cy.get('button').click();
-        });
-        cy.get(`${gefundeneBuecherSelektor} tr td:nth-child(1)`)
-            .first()
-            .click();
-
-        // Then
-        cy.get(
-            `${detailsSelektor} hs-details-stammdaten hs-details-art div div span span`,
-        ).should('have.text', druckausgabe);
-        cy.log(`Details mit ${druckausgabe}: erfolgreich`);
-    });
-
-    it.skip('Noch nicht fertig', () => {
-        cy.log('Beispiel fuer einen noch nicht fertigen Test');
+        cy.log(`Suchen nach Geschlecht "${geschlecht}": erfolgreich`);
     });
 });
