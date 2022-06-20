@@ -21,7 +21,6 @@ import {
     type Familienstand,
     FindError,
     type GeschlechtType,
-    type InteresseType,
     type Kunde,
     KundeReadService,
     KundeWriteService,
@@ -94,12 +93,15 @@ export class UpdateKundeComponent implements OnInit {
             return;
         }
 
+        const { familienstand } = this.updateForm.value as {
+            familienstand: Familienstand;
+        };
         const { nachname } = this.updateForm.value as { nachname: string };
         const { geschlecht } = this.updateForm.value as {
             geschlecht: GeschlechtType;
         };
         const { interessen } = this.updateForm.value as {
-            interessen: InteresseType | '' | undefined;
+            interessen: string[] | undefined;
         };
 
         const { kunde, service } = this;
@@ -107,8 +109,10 @@ export class UpdateKundeComponent implements OnInit {
         // datum, preis und rabatt koennen im Formular nicht geaendert werden
         // was kann ich nicht ändern:
         // geschlecht evtl,
+        kunde.familienstand = familienstand;
         kunde.nachname = nachname;
         kunde.geschlecht = geschlecht;
+        kunde.interessen = interessen;
         log.debug('UpdateBuchaComponent.onSubmit: kunde=', kunde);
 
         service
