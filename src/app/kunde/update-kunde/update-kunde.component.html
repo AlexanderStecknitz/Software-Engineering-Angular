@@ -1,5 +1,5 @@
 <div class="updateRoot">
-  <hs-update-nachname [updateForm]="updateForm"> </hs-update-nachname>
+  <hs-update-nachname [updateForm]="updateForm" [currenValue]="kunde.nachname"></hs-update-nachname>
   <hs-update-geschlecht [updateForm]="updateForm"> </hs-update-geschlecht>
   <hs-update-interessen [updateForm]="updateForm"> </hs-update-interessen>
   <form [formGroup]="updateForm" role="form" (submit)="onSubmit()"></form>
