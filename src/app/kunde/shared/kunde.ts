@@ -10,11 +10,16 @@ export type Familienstand =
     | 'VERHEIRATET'
     | 'VERWITWET';
 
-export type InteresseType = 'LESEN' | 'REISEN' | 'SPORT';
+export type InteresseType = 'L' | 'R' | 'S';
 
 export interface Umsatz {
     betrag: bigint;
     waehrung: string;
+}
+
+export interface User {
+    username: string;
+    password: string;
 }
 
 export interface Adresse {
@@ -33,7 +38,7 @@ export interface Kunde {
     homepage: URL | undefined;
     geschlecht: GeschlechtType | undefined;
     familienstand: Familienstand | undefined;
-    interessen: Set<InteresseType> | undefined;
+    interessen: string[] | undefined;
     umsatz: Umsatz | undefined;
     adresse: Adresse;
 }

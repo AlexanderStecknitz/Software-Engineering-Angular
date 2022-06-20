@@ -1,3 +1,5 @@
+// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable max-lines-per-function */
 /*
  * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
@@ -15,9 +17,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import {
+    type Adresse,
     type Familienstand,
     type GeschlechtType,
-    type InteresseType,
     type Kunde,
     type KundeShared,
     type Umsatz,
@@ -33,12 +35,20 @@ import log from 'loglevel';
  * </ul>
  */
 export interface KundeForm extends KundeShared {
+    adresse: Adresse;
     geschlecht: GeschlechtType;
     geburtsdatum: Date;
     homepage: URL;
     familienstand: Familienstand;
-    umsatz: Umsatz;
-    interessen: Set<InteresseType>;
+    // interessen: Set<InteresseType>;
+    plz: string;
+    ort: string;
+    betrag: bigint;
+    // Technically not string, change later.
+    waehrung: string;
+    sport: boolean;
+    reisen: boolean;
+    lesen: boolean;
 }
 
 /**
@@ -56,19 +66,46 @@ export const toKunde = (kundeForm: KundeForm) => {
         newsletter,
         geschlecht,
         geburtsdatum,
-        adresse,
         homepage,
         familienstand,
-        umsatz,
-        interessen,
+        plz = '76149',
+        ort = 'Karlsruhe',
+        betrag,
+        waehrung,
+        sport,
+        reisen,
+        lesen,
     } = kundeForm;
+
+    const adresse: Adresse = {
+        plz,
+        ort,
+    };
+
+    const umsatz: Umsatz = {
+        betrag,
+        waehrung,
+    };
+
+    // TODO Currently not compatible with create components. Fix.
+    const interessen: string[] = [];
+    if (sport) {
+        interessen.push('S');
+    }
+    if (lesen) {
+        interessen.push('L');
+    }
+    if (reisen) {
+        interessen.push('R');
+    }
 
     const datumTemporal = new Temporal.PlainDate(
         geburtsdatum.getFullYear(),
         geburtsdatum.getMonth() + 1,
         geburtsdatum.getDate(),
     );
-    log.debug('toBuch: datumTemporal=', datumTemporal);
+    // TODO Somehow the datumTemporal gets overwritten with the current date before being passed on as kunde.
+    log.debug('toKunde: datumTemporal=', datumTemporal);
 
     const kunde: Kunde = {
         nachname,

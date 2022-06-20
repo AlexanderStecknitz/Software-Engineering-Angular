@@ -2,12 +2,14 @@
 
 export { FindError, SaveError, UpdateError, RemoveError } from './errors';
 export {
+    type Adresse,
     type Kunde,
     type KundeShared,
     type GeschlechtType,
     type Familienstand,
     type InteresseType,
     type Umsatz,
+    type User,
 } from './kunde';
 export {
     KundeReadService,

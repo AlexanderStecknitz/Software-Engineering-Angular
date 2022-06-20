@@ -26,7 +26,7 @@ import {
 import { type Observable, of } from 'rxjs';
 import { RemoveError, SaveError, UpdateError } from './errors';
 import { catchError, first, map } from 'rxjs/operators';
-import { type Kunde } from './kunde';
+import { type Kunde, type User } from './kunde';
 // eslint-disable-next-line sort-imports
 import { Injectable } from '@angular/core';
 import { Temporal } from '@js-temporal/polyfill';
@@ -64,7 +64,7 @@ export class KundeWriteService {
     }
 
     /**
-     * Ein neues Kunde anlegen
+     * Einen neuen Kunden anlegen
      * @param neuerKunde Das JSON-Objekt mit dem neuen Kunde
      */
     save(kunde: Kunde): Observable<SaveError | string> {
@@ -79,8 +79,21 @@ export class KundeWriteService {
         });
         /* eslint-enable @typescript-eslint/naming-convention */
 
+        const user: User = {
+            username: 'test',
+            password: 'Pass1234',
+        };
+
+        const customBody = {
+            kunde,
+            user,
+        };
+
+        const json = JSON.stringify(customBody);
+        log.debug('JSON = ', json);
+
         return this.httpClient
-            .post(this.#baseUrl, toKundeServer(kunde), {
+            .post(this.#baseUrl, json, {
                 headers,
                 observe: 'response',
                 responseType: 'text',

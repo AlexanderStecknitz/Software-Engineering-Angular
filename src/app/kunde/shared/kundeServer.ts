@@ -17,7 +17,6 @@
 import type {
     Familienstand,
     GeschlechtType,
-    InteresseType,
     Kunde,
     KundeShared,
     Umsatz,
@@ -44,7 +43,7 @@ export interface KundeServer extends KundeShared {
     homepage?: URL;
     familienstand?: Familienstand;
     umsatz?: Umsatz;
-    interessen?: Set<InteresseType>;
+    interessen?: string[];
     // eslint-disable-next-line @typescript-eslint/naming-convention
     _links?: {
         self: Link;
