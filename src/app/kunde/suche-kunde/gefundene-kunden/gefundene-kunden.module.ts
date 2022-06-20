@@ -17,7 +17,7 @@
 
 import { GefundeneKundenComponent } from './gefundene-kunden.component';
 // eslint-disable-next-line import/no-unresolved
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 // eslint-disable-next-line import/no-unresolved
 import { MatCardModule } from '@angular/material/card';
 // eslint-disable-next-line import/no-unresolved
