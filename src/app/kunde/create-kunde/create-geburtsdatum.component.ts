@@ -34,7 +34,7 @@ export class CreateGeburtsdatumComponent implements OnInit {
 
     readonly today = new Date();
 
-    readonly geburtsdatum = new FormControl(this.today);
+    readonly geburtsdatum = new FormControl(undefined);
 
     ngOnInit() {
         log.debug('CreateGeburtsdatumComponent.ngOnInit');
