@@ -52,17 +52,6 @@ export class UpdateKundeComponent implements OnInit {
 
     errorMsg: string | undefined;
 
-    // eslint-disable-next-line max-params
-    constructor(
-        private readonly service: KundeWriteService,
-        private readonly readService: KundeReadService,
-        private readonly titleService: Title,
-        private readonly router: Router,
-        private readonly route: ActivatedRoute,
-    ) {
-        log.debug('UpdateBuchComponent.constructor()');
-    }
-
     ngOnInit() {
         // Pfad-Parameter aus /buecher/:id/update
         const id = this.route.snapshot.paramMap.get('id') ?? undefined;
@@ -74,12 +63,23 @@ export class UpdateKundeComponent implements OnInit {
                 tap(result => {
                     this.#setProps(result);
                     log.debug(
-                        'UpdateKundeComponent.ngOnInit: kunde=',
-                        this.kunde,
+                        'UpdateKundeComponent.ngOnInit: kunde=akunde',
+                        this.kunde?.nachname,
                     );
                 }),
             )
             .subscribe();
+    }
+
+    // eslint-disable-next-line max-params
+    constructor(
+        private readonly service: KundeWriteService,
+        private readonly readService: KundeReadService,
+        private readonly titleService: Title,
+        private readonly router: Router,
+        private readonly route: ActivatedRoute,
+    ) {
+        log.debug('UpdateKundeComponent.constructor()');
     }
 
     /**
@@ -90,7 +90,7 @@ export class UpdateKundeComponent implements OnInit {
      */
     onSubmit() {
         if (this.updateForm.pristine || this.kunde === undefined) {
-            log.debug('UpdateBuchComponent.onSubmit: keine Aenderungen');
+            log.debug('UpdateKundeComponent.onSubmit: keine Aenderungen');
             return;
         }
 
@@ -98,11 +98,9 @@ export class UpdateKundeComponent implements OnInit {
         const { geschlecht } = this.updateForm.value as {
             geschlecht: GeschlechtType;
         };
-        /*
-      const { interessen } = this.updateForm.value as {
+        const { interessen } = this.updateForm.value as {
             interessen: InteresseType | '' | undefined;
         };
-        */
 
         const { kunde, service } = this;
 
@@ -111,7 +109,7 @@ export class UpdateKundeComponent implements OnInit {
         // geschlecht evtl,
         kunde.nachname = nachname;
         kunde.geschlecht = geschlecht;
-        log.debug('UpdateBuchaComponent.onSubmit: buch=', kunde);
+        log.debug('UpdateBuchaComponent.onSubmit: kunde=', kunde);
 
         service
             .update(kunde)
@@ -142,13 +140,13 @@ export class UpdateKundeComponent implements OnInit {
 
     #handleFindError(err: FindError) {
         const { statuscode } = err;
-        log.debug('UpdateBuchComponent.#handleError: statuscode=', statuscode);
+        log.debug('UpdateKundeComponent.#handleError: statuscode=', statuscode);
 
         this.kunde = undefined;
 
         switch (statuscode) {
             case HttpStatusCode.NotFound:
-                this.errorMsg = 'Kein Buch gefunden.';
+                this.errorMsg = 'Kein Kunde gefunden.';
                 break;
             case HttpStatusCode.TooManyRequests:
                 this.errorMsg =

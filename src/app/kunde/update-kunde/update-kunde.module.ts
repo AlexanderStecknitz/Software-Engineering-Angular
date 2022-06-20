@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/no-unresolved
+import { MatButtonModule } from '@angular/material/button';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
@@ -8,6 +10,7 @@ import { UpdateNachnameModule } from './update-nachname.module';
 
 @NgModule({
     imports: [
+        MatButtonModule,
         ReactiveFormsModule,
         UpdateGeschlechtModule,
         UpdateInteressenModule,
