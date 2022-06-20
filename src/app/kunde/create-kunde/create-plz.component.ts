@@ -40,7 +40,7 @@ export class CreatePlzComponent implements OnInit {
     //    serverseitig mittels Request/Response
     //    clientseitig bei den Ereignissen keyup, change, blur, ...
     // Ein Endbenutzer bewirkt staendig einen neuen Fehlerstatus
-    readonly postleitzahl = new FormControl(undefined, [
+    readonly plz = new FormControl(undefined, [
         Validators.required,
         Validators.minLength(CreatePlzComponent.MIN_LENGTH),
         // Todo: Add proper RegEx to validator.
@@ -50,6 +50,6 @@ export class CreatePlzComponent implements OnInit {
     ngOnInit() {
         log.debug('CreatePlzComponent.ngOnInit');
         // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.createForm.addControl('postleitzahl', this.postleitzahl);
+        this.createForm.addControl('plz', this.plz);
     }
 }
