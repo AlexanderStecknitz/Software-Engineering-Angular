@@ -1,0 +1,24 @@
+button:hover {
+    opacity: 0.5;
+  }
+
+  .updateRoot {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .updateInputField {
+    width: 200%;
+    margin: 5px;
+  }
+
+  .interessen-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    gap: 60px;
+  }

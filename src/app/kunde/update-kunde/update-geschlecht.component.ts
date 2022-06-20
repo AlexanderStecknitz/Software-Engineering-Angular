@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 - present Juergen Zimmermann, Hochschule Karlsruhe
+ * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,39 +17,37 @@
 
 import { Component, Input, type OnInit } from '@angular/core';
 import { FormControl, type FormGroup, Validators } from '@angular/forms';
+import { type GeschlechtType } from '../shared/kunde';
 import log from 'loglevel';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-update-nachname</code>
+ * Komponente f&uuml;r das Tag <code>hs-update-art</code>
  */
 @Component({
-    selector: 'hs-update-nachname',
-    templateUrl: './update-nachname.component.html',
+    selector: 'hs-update-geschlecht',
+    templateUrl: './update-geschlecht.component.html',
     styleUrls: ['./update.component.scss'],
 })
-export class UpdateNachnameComponent implements OnInit {
-    private static readonly MIN_LENGTH = 2;
-
-    // <hs-update-nachname [form]="form" [currentValue]="...">
+export class UpdateGeschlechtComponent implements OnInit {
+    // <hs-update-art [form]="form" [currentValue]="...">
     @Input()
     updateForm!: FormGroup;
 
     @Input()
-    currentValue!: string;
+    currentValue!: GeschlechtType;
 
-    nachname!: FormControl;
+    geschlecht!: FormControl;
 
     ngOnInit() {
         log.debug(
-            'UpdateNachnameComponent.ngOnInit: currentValue=',
+            'UpdateArtComponent.ngOnInit: currentValue=',
             this.currentValue,
         );
         // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.nachname = new FormControl(this.currentValue, [
+        this.geschlecht = new FormControl(
+            this.currentValue,
             Validators.required,
-            Validators.minLength(UpdateNachnameComponent.MIN_LENGTH),
-            Validators.pattern(/^\w/u),
-        ]);
-        this.updateForm.addControl('nachname', this.nachname);
+        );
+        this.updateForm.addControl('geschlecht', this.geschlecht);
     }
 }

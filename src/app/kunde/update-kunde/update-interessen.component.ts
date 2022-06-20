@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 - present Juergen Zimmermann, Hochschule Karlsruhe
+ * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,40 +16,33 @@
  */
 
 import { Component, Input, type OnInit } from '@angular/core';
-import { FormControl, type FormGroup, Validators } from '@angular/forms';
+import { FormControl, type FormGroup } from '@angular/forms';
 import log from 'loglevel';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-update-nachname</code>
+ * Komponente mit dem Tag &lt;hs-updateForm-art&gt;, um das Erfassungsformular
+ * f&uuml;r ein neues Buch zu realisieren.
  */
 @Component({
-    selector: 'hs-update-nachname',
-    templateUrl: './update-nachname.component.html',
+    selector: 'hs-update-interessen',
+    templateUrl: './update-interessen.component.html',
     styleUrls: ['./update.component.scss'],
 })
-export class UpdateNachnameComponent implements OnInit {
-    private static readonly MIN_LENGTH = 2;
-
-    // <hs-update-nachname [form]="form" [currentValue]="...">
+export class UpdateInteressenComponent implements OnInit {
     @Input()
     updateForm!: FormGroup;
 
-    @Input()
-    currentValue!: string;
+    readonly sport = new FormControl(false);
 
-    nachname!: FormControl;
+    readonly lesen = new FormControl(false);
+
+    readonly reisen = new FormControl(false);
 
     ngOnInit() {
-        log.debug(
-            'UpdateNachnameComponent.ngOnInit: currentValue=',
-            this.currentValue,
-        );
+        log.debug('UpdateInteressenComponent.ngOnInit');
         // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.nachname = new FormControl(this.currentValue, [
-            Validators.required,
-            Validators.minLength(UpdateNachnameComponent.MIN_LENGTH),
-            Validators.pattern(/^\w/u),
-        ]);
-        this.updateForm.addControl('nachname', this.nachname);
+        this.updateForm.addControl('sport', this.sport);
+        this.updateForm.addControl('lesen', this.lesen);
+        this.updateForm.addControl('reisen', this.reisen);
     }
 }
