@@ -16,7 +16,7 @@
  */
 
 import { Component, Input, type OnInit } from '@angular/core';
-import { FormControl, type FormGroup } from '@angular/forms';
+import { FormControl, type FormGroup, Validators } from '@angular/forms';
 import log from 'loglevel';
 
 /**
@@ -32,9 +32,9 @@ export class CreateGeburtsdatumComponent implements OnInit {
     @Input()
     createForm!: FormGroup;
 
-    readonly today = new Date();
+    readonly yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
 
-    readonly geburtsdatum = new FormControl(undefined);
+    readonly geburtsdatum = new FormControl(undefined, [Validators.required]);
 
     ngOnInit() {
         log.debug('CreateGeburtsdatumComponent.ngOnInit');
@@ -44,6 +44,6 @@ export class CreateGeburtsdatumComponent implements OnInit {
 
     dayClicked({ date }: { date: Date }): void {
         log.debug('CreateGeburtsdatumComponent: dayClicked', date);
-        this.createForm.setControl('datum', new FormControl(date));
+        this.createForm.setControl('geburtsdatum', new FormControl(date));
     }
 }
