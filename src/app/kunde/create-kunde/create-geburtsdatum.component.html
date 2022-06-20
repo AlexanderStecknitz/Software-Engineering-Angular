@@ -1,6 +1,15 @@
-<mat-form-field appearance="outline" class="userInputField" [formGroup]="createForm">
+<mat-form-field
+  appearance="outline"
+  class="userInputField"
+  [formGroup]="createForm"
+>
   <mat-label>Geburtsdatum</mat-label>
-  <input matInput [max]="today" [matDatepicker]="picker" formControlName="geburtsdatum"/>
+  <input
+    matInput
+    [max]="yesterday"
+    [matDatepicker]="picker"
+    formControlName="geburtsdatum"
+  />
   <mat-hint>MM/DD/YYYY</mat-hint>
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
