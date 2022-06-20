@@ -69,8 +69,6 @@ export class KundeWriteService {
      */
     save(kunde: Kunde): Observable<SaveError | string> {
         log.debug('KundeWriteService.save: kunde=', kunde);
-        kunde.geburtsdatum = Temporal.Now.plainDateISO();
-        log.debug('KundeWriteService.save: kunde=', kunde);
 
         /* eslint-disable @typescript-eslint/naming-convention */
         const headers = new HttpHeaders({
