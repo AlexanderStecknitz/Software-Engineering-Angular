@@ -32,7 +32,7 @@ export class CreateNewsletterComponent implements OnInit {
     @Input()
     createForm!: FormGroup;
 
-    readonly newsletter = new FormControl<boolean>(false);
+    readonly newsletter = new FormControl(false);
 
     ngOnInit() {
         log.debug('CreateNewsletterComponent.ngOnInit');
