@@ -175,6 +175,7 @@ export class KundeWriteService {
                     if (versionOderError instanceof UpdateError) {
                         return versionOderError;
                     }
+                    log.debug('blabla', kundeDTO);
                     kunde.version = versionOderError;
                     return kunde;
                 }),

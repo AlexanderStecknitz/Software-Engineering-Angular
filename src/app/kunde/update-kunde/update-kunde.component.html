@@ -1,10 +1,10 @@
   <form [formGroup]="updateForm" role="form" (submit)="onSubmit()">
     <div class="updateRoot">
-        <button mat-raised-button color="primary" type="submit" >hit me</button>
         <hs-update-nachname [updateForm]="updateForm"></hs-update-nachname>
         <hs-update-geschlecht [updateForm]="updateForm"> </hs-update-geschlecht>
         <hs-update-interessen [updateForm]="updateForm"> </hs-update-interessen>
-    </div>
+        <button mat-raised-button color="primary" type="submit" >hit me</button>
+      </div>
   </form>
   
 
