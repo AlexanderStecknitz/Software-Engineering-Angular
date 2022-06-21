@@ -1,4 +1,6 @@
 // eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable max-statements */
+// eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable max-lines-per-function */
 /*
  * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
@@ -94,10 +96,9 @@ export class UpdateKundeComponent implements OnInit {
             log.debug('UpdateKundeComponent.onSubmit: keine Aenderungen');
             return;
         }
-        /* const { familienstand } = this.updateForm.value as {
+        const { familienstand } = this.updateForm.value as {
             familienstand: Familienstand;
         };
-        */
         const { nachname } = this.updateForm.value as { nachname: string };
         const { geschlecht } = this.updateForm.value as {
             geschlecht: GeschlechtType;
@@ -137,6 +138,7 @@ export class UpdateKundeComponent implements OnInit {
         // kunde.familienstand = familienstand;
         kunde.nachname = nachname;
         kunde.geschlecht = geschlecht;
+        kunde.familienstand = familienstand;
         log.debug('UpdateKundeComponent.onSubmit: kunde=', kunde);
         service
             .update(kunde)
