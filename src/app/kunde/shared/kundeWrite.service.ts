@@ -23,11 +23,10 @@ import {
     HttpResponse,
     // eslint-disable-next-line import/no-unresolved
 } from '@angular/common/http';
+import { type Kunde, type User } from './kunde';
 import { type Observable, of } from 'rxjs';
 import { RemoveError, SaveError, UpdateError } from './errors';
 import { catchError, first, map } from 'rxjs/operators';
-import { type Kunde, type User } from './kunde';
-// eslint-disable-next-line sort-imports
 import { Injectable } from '@angular/core';
 import { Temporal } from '@js-temporal/polyfill';
 import log from 'loglevel';
@@ -141,7 +140,7 @@ export class KundeWriteService {
         log.debug('KundeWriteService.update: kunde=', kunde);
 
         // id, version und interessen gehoeren nicht zu den serverseitigen Nutzdaten
-        const { id, version, interessen, ...kundeDTO } = kunde; // eslint-disable-line @typescript-eslint/no-unused-vars
+        const { id, version, ...kundeDTO } = kunde;
         if (version === undefined) {
             const msg = `Keine Versionsnummer fuer den Kunden ${id}`;
             log.debug(msg);
