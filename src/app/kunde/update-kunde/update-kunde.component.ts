@@ -100,11 +100,28 @@ export class UpdateKundeComponent implements OnInit {
         const { geschlecht } = this.updateForm.value as {
             geschlecht: GeschlechtType;
         };
-        const { interessen } = this.updateForm.value as {
-            interessen: string[] | undefined;
+
+        const { sport } = this.updateForm.value as {
+            sport: boolean;
+        };
+        const { reiten } = this.updateForm.value as {
+            reiten: boolean;
+        };
+        const { lesen } = this.updateForm.value as {
+            lesen: boolean;
         };
 
         const { kunde, service } = this;
+
+        if (sport) {
+            kunde.interessen?.push('S');
+        }
+        if (lesen) {
+            kunde.interessen?.push('L');
+        }
+        if (reiten) {
+            kunde.interessen?.push('R');
+        }
 
         // datum, preis und rabatt koennen im Formular nicht geaendert werden
         // was kann ich nicht ändern:
@@ -112,7 +129,7 @@ export class UpdateKundeComponent implements OnInit {
         kunde.familienstand = familienstand;
         kunde.nachname = nachname;
         kunde.geschlecht = geschlecht;
-        kunde.interessen = interessen;
+
         log.debug('UpdateBuchaComponent.onSubmit: kunde=', kunde);
 
         service
