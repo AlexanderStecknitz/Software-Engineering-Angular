@@ -1,3 +1,7 @@
+// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable max-statements */
+// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable max-lines-per-function */
 /*
  * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
@@ -92,7 +96,6 @@ export class UpdateKundeComponent implements OnInit {
             log.debug('UpdateKundeComponent.onSubmit: keine Aenderungen');
             return;
         }
-
         const { familienstand } = this.updateForm.value as {
             familienstand: Familienstand;
         };
@@ -100,7 +103,6 @@ export class UpdateKundeComponent implements OnInit {
         const { geschlecht } = this.updateForm.value as {
             geschlecht: GeschlechtType;
         };
-
         const { sport } = this.updateForm.value as {
             sport: boolean;
         };
@@ -110,28 +112,34 @@ export class UpdateKundeComponent implements OnInit {
         const { lesen } = this.updateForm.value as {
             lesen: boolean;
         };
-
         const { kunde, service } = this;
-
+        const myInteresse = [];
         if (sport) {
-            kunde.interessen?.push('S');
+            myInteresse.push('S');
         }
         if (lesen) {
-            kunde.interessen?.push('L');
+            myInteresse.push('L');
         }
         if (reiten) {
-            kunde.interessen?.push('R');
+            myInteresse.push('R');
         }
-
+        log.debug(
+            'UpdateKundeComponent.onSubmit: Interessen setzen= ',
+            myInteresse,
+        );
+        kunde.interessen = myInteresse;
+        log.debug(
+            'UpdateKundeComponent.onSubmit: Interessen setzen= ',
+            myInteresse,
+        );
         // datum, preis und rabatt koennen im Formular nicht geaendert werden
         // was kann ich nicht ändern:
         // geschlecht evtl,
-        kunde.familienstand = familienstand;
+        // kunde.familienstand = familienstand;
         kunde.nachname = nachname;
         kunde.geschlecht = geschlecht;
-
-        log.debug('UpdateBuchaComponent.onSubmit: kunde=', kunde);
-
+        kunde.familienstand = familienstand;
+        log.debug('UpdateKundeComponent.onSubmit: kunde=', kunde);
         service
             .update(kunde)
             .pipe(
@@ -139,7 +147,6 @@ export class UpdateKundeComponent implements OnInit {
                 tap(result => this.#handleUpdateResult(result)),
             )
             .subscribe({ next: () => this.#navigateHome() });
-
         // damit das (Submit-) Ereignis konsumiert wird und nicht an
         // uebergeordnete Eltern-Komponenten propagiert wird bis zum
         // Refresh der gesamten Seite
