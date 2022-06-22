@@ -77,26 +77,4 @@ describe('Suchen', () => {
         );
         cy.log(`Suchen mit Nachname "${nachname}": erfolgreich`);
     });
-
-    it('Suchen nach Geschlecht "Männlich"', () => {
-        // Given
-        const geschlecht = 'M';
-
-        // When
-        cy.get(sucheSelektor).click();
-        cy.get(suchformularSelektor).within(() => {
-            cy.get('hs-suche-geschlechttype mat-select').select(geschlecht);
-            cy.get('button').click();
-        });
-
-        // Then
-        // <span> wegen [ngSwitch]
-        cy.get(`${gefundeneKundenSelektor} tr td:nth-child(4) span span`).each(
-            // eslint-disable-next-line arrow-parens
-            (elem) => {
-                cy.wrap(elem).should('have.text', geschlecht);
-            },
-        );
-        cy.log(`Suchen nach Geschlecht "${geschlecht}": erfolgreich`);
-    });
 });
