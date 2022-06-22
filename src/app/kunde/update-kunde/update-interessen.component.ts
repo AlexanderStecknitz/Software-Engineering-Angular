@@ -17,6 +17,7 @@
 
 import { Component, Input, type OnInit } from '@angular/core';
 import { FormControl, type FormGroup } from '@angular/forms';
+import type { MatCheckboxChange } from '@angular/material/checkbox';
 import log from 'loglevel';
 
 /**
@@ -38,11 +39,26 @@ export class UpdateInteressenComponent implements OnInit {
 
     readonly reisen = new FormControl(false);
 
+    /*
+    reisenChange(event: MatCheckboxChange) {
+        log.debug('reisenChange', event.checked);
+    }
+
+    lesenChange(event: MatCheckboxChange) {
+        log.debug('lesenChange', event.checked);
+    }
+
+    sportChange(event: MatCheckboxChange) {
+        log.debug('sportChange', event.checked);
+    }
+    */
+
     ngOnInit() {
         log.debug('UpdateInteressenComponent.ngOnInit');
         // siehe formControlName innerhalb @Component({templateUrl: ...})
         this.updateForm.addControl('sport', this.sport);
         this.updateForm.addControl('lesen', this.lesen);
         this.updateForm.addControl('reisen', this.reisen);
+        log.debug('UpdateInteressenComponent.ngOnInit');
     }
 }
