@@ -69,7 +69,8 @@ describe('Suchen', () => {
         });
 
         // Then
-        cy.get(`${gefundeneKundenSelektor} div mat-card`).each(
+        // eslint-disable-next-line prettier/prettier
+        cy.get(`${gefundeneKundenSelektor} div mat-card`, { timeout: 200_000 }).each(
             // eslint-disable-next-line arrow-parens
             (elem) => {
                 expect(elem.text()).to.contain(nachname);
