@@ -3,8 +3,9 @@
   class="userInputField"
   [formGroup]="createForm"
 >
-  <mat-label>Geburtsdatum</mat-label>
+  <mat-label for="geburtsdatumInput">Geburtsdatum</mat-label>
   <input
+    id="geburtsdatumInput"
     matInput
     [max]="yesterday"
     [matDatepicker]="picker"

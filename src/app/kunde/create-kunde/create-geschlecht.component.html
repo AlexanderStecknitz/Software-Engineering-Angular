@@ -5,12 +5,13 @@
 >
   <mat-label>Geschlecht</mat-label>
   <mat-select
+    id="geschlechtInput"
     formControlName="geschlecht"
     [class.is-invalid]="geschlecht.invalid && geschlecht.touched"
     [class.is-valid]="geschlecht.valid && geschlecht.touched"
   >
     <mat-option value="M">Männlich</mat-option>
-    <mat-option value="W">Weiblich</mat-option>
+    <mat-option id="Weiblich" value="W">Weiblich</mat-option>
     <mat-option value="D">Divers</mat-option>
   </mat-select>
   <mat-hint>Bitte Geschlecht auswählen</mat-hint>
