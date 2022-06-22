@@ -19,8 +19,8 @@
 
 // CSS-Selektoren in der Navigationsleiste, vgl.: XPath
 const navSelektor = 'hs-root hs-header hs-nav';
-const suchePath = '/buecher/suche';
-const sucheSelektor = `${navSelektor} ul li a[routerLink="${suchePath}"]`;
+const suchePath = 'kunde/suche';
+const sucheSelektor = `${navSelektor} div button[routerLink="${suchePath}"]`;
 
 // CSS-Selektoren in <main>
 const mainSelektor = 'hs-root hs-main';
@@ -44,7 +44,7 @@ describe('Suchen', () => {
         // Then
         // Strings ueberpruefen
         cy.contains(navSelektor, 'Suche');
-        cy.contains(mainSelektor, 'Hello!');
+        cy.contains(mainSelektor, 'Alexander');
     });
 
     it('Suchseite', () => {
@@ -64,7 +64,7 @@ describe('Suchen', () => {
         // When
         cy.get(sucheSelektor).click();
         cy.get(suchformularSelektor).within(() => {
-            cy.get('#titelInput').type(nachname);
+            cy.get('#nachnameInput').type(nachname);
             cy.get('button').click();
         });
 
