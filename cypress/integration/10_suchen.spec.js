@@ -69,7 +69,7 @@ describe('Suchen', () => {
         });
 
         // Then
-        cy.get(`${gefundeneKundenSelektor} tr td:nth-child(3)`).each(
+        cy.get(`${gefundeneKundenSelektor} div mat-card`).each(
             // eslint-disable-next-line arrow-parens
             (elem) => {
                 expect(elem.text()).to.contain(nachname);
@@ -85,7 +85,7 @@ describe('Suchen', () => {
         // When
         cy.get(sucheSelektor).click();
         cy.get(suchformularSelektor).within(() => {
-            cy.get('hs-suche-geschlechttype select').select(geschlecht);
+            cy.get('hs-suche-geschlechttype mat-select').select(geschlecht);
             cy.get('button').click();
         });
 
