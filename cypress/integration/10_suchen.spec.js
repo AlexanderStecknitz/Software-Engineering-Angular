@@ -19,7 +19,7 @@
 
 // CSS-Selektoren in der Navigationsleiste, vgl.: XPath
 const navSelektor = 'hs-root hs-header hs-nav';
-const suchePath = '/buecher/suche';
+const suchePath = '/kunde/suche';
 const sucheSelektor = `${navSelektor} ul li a[routerLink="${suchePath}"]`;
 
 // CSS-Selektoren in <main>
