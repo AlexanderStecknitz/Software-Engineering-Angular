@@ -20,23 +20,34 @@ import { FormControl, type FormGroup, Validators } from '@angular/forms';
 import log from 'loglevel';
 
 /**
- * Komponente mit dem Tag &lt;hs-create-art&gt;, um das Erfassungsformular
- * f&uuml;r ein neues Buch zu realisieren.
+ * Komponente mit dem Tag "hs-create-homepage", um das Erfassungsformular
+ * für einen neuen Kunden zu realisieren.
  */
 @Component({
-    selector: 'hs-create-familienstand',
-    templateUrl: './create-familienstand.component.html',
+    // moduleId: module.id,
+    selector: 'hs-create-homepage',
+    templateUrl: './create-homepage.component.html',
     styleUrls: ['./create-kunde.component.scss'],
 })
-export class CreateFamilienstandComponent implements OnInit {
+export class CreateHomepageComponent implements OnInit {
+    private static readonly MIN_LENGTH = 2;
+
     @Input()
     createForm!: FormGroup;
 
-    readonly familienstand = new FormControl(undefined, [Validators.required]);
+    // Keine Vorbelegung bzw. der leere String, da es Placeholder gibt
+    // Varianten fuer Validierung:
+    //    serverseitig mittels Request/Response
+    //    clientseitig bei den Ereignissen keyup, change, blur, ...
+    // Ein Endbenutzer bewirkt staendig einen neuen Fehlerstatus
+    readonly homepage = new FormControl('', [
+        Validators.required,
+        Validators.minLength(CreateHomepageComponent.MIN_LENGTH),
+    ]);
 
     ngOnInit() {
-        log.debug('CreateFamilienstandComponent.ngOnInit');
+        log.debug('CreateHomepageComponent.ngOnInit');
         // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.createForm.addControl('familienstand', this.familienstand);
+        this.createForm.addControl('homepage', this.homepage);
     }
 }

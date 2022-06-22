@@ -1,3 +1,7 @@
+// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable max-statements */
+// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable max-lines-per-function */
 /*
  * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
@@ -21,7 +25,6 @@ import {
     type Familienstand,
     FindError,
     type GeschlechtType,
-    type InteresseType,
     type Kunde,
     KundeReadService,
     KundeWriteService,
@@ -52,17 +55,6 @@ export class UpdateKundeComponent implements OnInit {
 
     errorMsg: string | undefined;
 
-    // eslint-disable-next-line max-params
-    constructor(
-        private readonly service: KundeWriteService,
-        private readonly readService: KundeReadService,
-        private readonly titleService: Title,
-        private readonly router: Router,
-        private readonly route: ActivatedRoute,
-    ) {
-        log.debug('UpdateBuchComponent.constructor()');
-    }
-
     ngOnInit() {
         // Pfad-Parameter aus /buecher/:id/update
         const id = this.route.snapshot.paramMap.get('id') ?? undefined;
@@ -74,12 +66,23 @@ export class UpdateKundeComponent implements OnInit {
                 tap(result => {
                     this.#setProps(result);
                     log.debug(
-                        'UpdateKundeComponent.ngOnInit: kunde=',
-                        this.kunde,
+                        'UpdateKundeComponent.ngOnInit: kunde=akunde',
+                        this.kunde?.nachname,
                     );
                 }),
             )
             .subscribe();
+    }
+
+    // eslint-disable-next-line max-params
+    constructor(
+        private readonly service: KundeWriteService,
+        private readonly readService: KundeReadService,
+        private readonly titleService: Title,
+        private readonly router: Router,
+        private readonly route: ActivatedRoute,
+    ) {
+        log.debug('UpdateKundeComponent.constructor()');
     }
 
     /**
@@ -90,29 +93,53 @@ export class UpdateKundeComponent implements OnInit {
      */
     onSubmit() {
         if (this.updateForm.pristine || this.kunde === undefined) {
-            log.debug('UpdateBuchComponent.onSubmit: keine Aenderungen');
+            log.debug('UpdateKundeComponent.onSubmit: keine Aenderungen');
             return;
         }
-
+        const { familienstand } = this.updateForm.value as {
+            familienstand: Familienstand;
+        };
         const { nachname } = this.updateForm.value as { nachname: string };
         const { geschlecht } = this.updateForm.value as {
             geschlecht: GeschlechtType;
         };
-        /*
-      const { interessen } = this.updateForm.value as {
-            interessen: InteresseType | '' | undefined;
+        const { sport } = this.updateForm.value as {
+            sport: boolean;
         };
-        */
-
+        const { reiten } = this.updateForm.value as {
+            reiten: boolean;
+        };
+        const { lesen } = this.updateForm.value as {
+            lesen: boolean;
+        };
         const { kunde, service } = this;
-
+        const myInteresse = [];
+        if (sport) {
+            myInteresse.push('S');
+        }
+        if (lesen) {
+            myInteresse.push('L');
+        }
+        if (reiten) {
+            myInteresse.push('R');
+        }
+        log.debug(
+            'UpdateKundeComponent.onSubmit: Interessen setzen= ',
+            myInteresse,
+        );
+        kunde.interessen = myInteresse;
+        log.debug(
+            'UpdateKundeComponent.onSubmit: Interessen setzen= ',
+            myInteresse,
+        );
         // datum, preis und rabatt koennen im Formular nicht geaendert werden
         // was kann ich nicht ändern:
         // geschlecht evtl,
+        // kunde.familienstand = familienstand;
         kunde.nachname = nachname;
         kunde.geschlecht = geschlecht;
-        log.debug('UpdateBuchaComponent.onSubmit: buch=', kunde);
-
+        kunde.familienstand = familienstand;
+        log.debug('UpdateKundeComponent.onSubmit: kunde=', kunde);
         service
             .update(kunde)
             .pipe(
@@ -120,7 +147,6 @@ export class UpdateKundeComponent implements OnInit {
                 tap(result => this.#handleUpdateResult(result)),
             )
             .subscribe({ next: () => this.#navigateHome() });
-
         // damit das (Submit-) Ereignis konsumiert wird und nicht an
         // uebergeordnete Eltern-Komponenten propagiert wird bis zum
         // Refresh der gesamten Seite
@@ -142,13 +168,13 @@ export class UpdateKundeComponent implements OnInit {
 
     #handleFindError(err: FindError) {
         const { statuscode } = err;
-        log.debug('UpdateBuchComponent.#handleError: statuscode=', statuscode);
+        log.debug('UpdateKundeComponent.#handleError: statuscode=', statuscode);
 
         this.kunde = undefined;
 
         switch (statuscode) {
             case HttpStatusCode.NotFound:
-                this.errorMsg = 'Kein Buch gefunden.';
+                this.errorMsg = 'Kein Kunde gefunden.';
                 break;
             case HttpStatusCode.TooManyRequests:
                 this.errorMsg =

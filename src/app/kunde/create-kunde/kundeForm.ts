@@ -38,7 +38,7 @@ export interface KundeForm extends KundeShared {
     adresse: Adresse;
     geschlecht: GeschlechtType;
     geburtsdatum: Date;
-    homepage: URL;
+    homepage: string;
     familienstand: Familienstand;
     // interessen: Set<InteresseType>;
     plz: string;

@@ -1,0 +1,16 @@
+<mat-form-field
+  appearance="outline"
+  class="userInputField"
+  [formGroup]="createForm"
+>
+  <mat-label>Homepage</mat-label>
+  <input
+    matInput
+    placeholder="ex. https://www.test.de"
+    autocomplete="off"
+    [class.is-invalid]="homepage.invalid && homepage.touched"
+    [class.is-valid]="homepage.valid && homepage.touched"
+    formControlName="homepage"
+  />
+  <mat-hint>Bitte die Homepagen eingeben</mat-hint>
+</mat-form-field>

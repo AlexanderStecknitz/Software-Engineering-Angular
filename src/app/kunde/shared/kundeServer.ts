@@ -40,7 +40,7 @@ interface Link {
 export interface KundeServer extends KundeShared {
     geschlecht?: GeschlechtType;
     geburtsdatum?: string;
-    homepage?: URL;
+    homepage?: string;
     familienstand?: Familienstand;
     umsatz?: Umsatz;
     interessen?: string[];

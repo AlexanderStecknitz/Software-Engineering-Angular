@@ -24,6 +24,7 @@ import { CreateEmailComponent } from './create-email.component';
 import { CreateFamilienstandComponent } from './create-familienstand.component';
 import { CreateGeburtsdatumComponent } from './create-geburtsdatum.component';
 import { CreateGeschlechtComponent } from './create-geschlecht.component';
+import { CreateHomepageComponent } from './create-homepage.component';
 import { CreateInteressenComponent } from './create-interessen.component';
 import { CreateKategorieComponent } from './create-kategorie-component';
 import { CreateKundeComponent } from './create-kunde.component';
@@ -80,6 +81,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
         CreateFamilienstandComponent,
         CreateGeburtsdatumComponent,
         CreateGeschlechtComponent,
+        CreateHomepageComponent,
         CreateInteressenComponent,
         CreateKategorieComponent,
         CreateKundeComponent,

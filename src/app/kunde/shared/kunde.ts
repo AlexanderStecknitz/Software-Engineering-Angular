@@ -35,7 +35,7 @@ export interface Kunde {
     kategorie: number;
     newsletter: boolean;
     geburtsdatum: Temporal.PlainDate | undefined;
-    homepage: URL | undefined;
+    homepage: string | undefined;
     geschlecht: GeschlechtType | undefined;
     familienstand: Familienstand | undefined;
     interessen: string[] | undefined;

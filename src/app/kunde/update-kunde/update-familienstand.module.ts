@@ -1,22 +1,22 @@
 // eslint-disable-next-line import/no-unresolved
-import { MatButtonModule } from '@angular/material/button';
-// eslint-disable-next-line import/no-unresolved
 import { MatFormFieldModule } from '@angular/material/form-field';
 // eslint-disable-next-line import/no-unresolved
 import { MatInputModule } from '@angular/material/input';
+// eslint-disable-next-line import/no-unresolved
+import { MatSelectModule } from '@angular/material/select';
 import { NgModule } from '@angular/core';
 // eslint-disable-next-line import/no-unresolved
 import { SharedModule } from 'src/app/shared/shared.module';
-import { UpdateNachnameComponent } from './update-nachname.component';
+import { UpdateFamilienstandComponent } from './update-familienstand.component';
 
 @NgModule({
     imports: [
-        MatButtonModule,
         MatFormFieldModule,
         MatInputModule,
+        MatSelectModule,
         SharedModule,
     ],
-    declarations: [UpdateNachnameComponent],
-    exports: [UpdateNachnameComponent],
+    declarations: [UpdateFamilienstandComponent],
+    exports: [UpdateFamilienstandComponent],
 })
-export class UpdateNachnameModule {}
+export class UpdateFamilienstandModule {}

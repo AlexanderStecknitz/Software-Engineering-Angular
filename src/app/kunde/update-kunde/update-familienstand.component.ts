@@ -17,26 +17,37 @@
 
 import { Component, Input, type OnInit } from '@angular/core';
 import { FormControl, type FormGroup, Validators } from '@angular/forms';
+import { type Familienstand } from '../shared/kunde';
 import log from 'loglevel';
 
 /**
- * Komponente mit dem Tag &lt;hs-create-art&gt;, um das Erfassungsformular
- * f&uuml;r ein neues Buch zu realisieren.
+ * Komponente f&uuml;r das Tag <code>hs-update-art</code>
  */
 @Component({
-    selector: 'hs-create-familienstand',
-    templateUrl: './create-familienstand.component.html',
-    styleUrls: ['./create-kunde.component.scss'],
+    selector: 'hs-update-familienstand',
+    templateUrl: './update-familienstand.component.html',
+    styleUrls: ['./update.component.scss'],
 })
-export class CreateFamilienstandComponent implements OnInit {
+export class UpdateFamilienstandComponent implements OnInit {
+    // <hs-update-familienstand [form]="form" [currentValue]="...">
     @Input()
-    createForm!: FormGroup;
+    updateForm!: FormGroup;
 
-    readonly familienstand = new FormControl(undefined, [Validators.required]);
+    @Input()
+    currentValue!: Familienstand;
+
+    familienstand!: FormControl;
 
     ngOnInit() {
-        log.debug('CreateFamilienstandComponent.ngOnInit');
+        log.debug(
+            'UpdateArtComponent.ngOnInit: currentValue=',
+            this.currentValue,
+        );
         // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.createForm.addControl('familienstand', this.familienstand);
+        this.familienstand = new FormControl(
+            this.currentValue,
+            Validators.required,
+        );
+        this.updateForm.addControl('familienstand', this.familienstand);
     }
 }

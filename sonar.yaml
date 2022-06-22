@@ -24,7 +24,7 @@
 # https://docs.docker.com/compose/compose-file/compose-file-v3
 services:
   sonar:
-    image: sonarqube:9.4.0-community
+    image: sonarqube:9.5.0-community
     ports:
       # Port fuer HTTP
       - published: 9000

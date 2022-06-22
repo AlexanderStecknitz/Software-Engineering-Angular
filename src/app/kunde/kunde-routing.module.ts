@@ -17,7 +17,7 @@ const routes: Routes = [
         canDeactivate: [CreateKundeGuard],
     },
     {
-        path: 'update',
+        path: 'update/:id',
         component: UpdateKundeComponent,
     },
 ];
