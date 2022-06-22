@@ -106,8 +106,8 @@ export class UpdateKundeComponent implements OnInit {
         const { sport } = this.updateForm.value as {
             sport: boolean;
         };
-        const { reiten } = this.updateForm.value as {
-            reiten: boolean;
+        const { reisen } = this.updateForm.value as {
+            reisen: boolean;
         };
         const { lesen } = this.updateForm.value as {
             lesen: boolean;
@@ -120,7 +120,7 @@ export class UpdateKundeComponent implements OnInit {
         if (lesen) {
             myInteresse.push('L');
         }
-        if (reiten) {
+        if (reisen) {
             myInteresse.push('R');
         }
         log.debug(

@@ -21,26 +21,21 @@ import { login } from './login';
 
 // CSS-Selektoren in der Navigationsleiste
 const navSelektor = 'hs-root hs-header hs-nav';
-const createPath = '/kunde/create';
+const createPath = '/buecher/create';
 const createMenuSelektor = `${navSelektor} ul li a[routerLink="${createPath}"]`;
-const suchePath = '/kunde/suche';
+const suchePath = '/buecher/suche';
 const sucheSelektor = `${navSelektor} ul li a[routerLink="${suchePath}"]`;
 
 // CSS-Selektoren in <main>
 const mainSelektor = 'hs-root hs-main';
 const homeSelektor = `${mainSelektor} hs-home`;
 
-const createSelektor = `${mainSelektor} hs-create-kunde`;
-const kategorieCreateSelektor = 'hs-create-kategorie select';
-const geschlechtCreateSelektor = 'hs-create-geschlecht select';
-const familienstandCreateSelektor = 'hs-create-familienstand select';
-/*
+const createSelektor = `${mainSelektor} hs-create-buch`;
 const ratingCreateSelektor = 'hs-create-rating select';
 const verlagCreateSelektor = 'hs-create-verlag select';
-*/
 
-const suchformularSelektor = `${mainSelektor} hs-suche-kunde hs-suchformular`;
-const gefundeneKundenSelektor = `${mainSelektor} hs-suchergebnis hs-gefundene-kunden`;
+const suchformularSelektor = `${mainSelektor} hs-suche-buecher hs-suchformular`;
+const gefundeneBuecherSelektor = `${mainSelektor} hs-suchergebnis hs-gefundene-buecher`;
 
 /* global Cypress, cy, describe, it, beforeEach, expect */
 
@@ -48,41 +43,29 @@ const gefundeneKundenSelektor = `${mainSelektor} hs-suchergebnis hs-gefundene-ku
 describe('Neuanlegen', () => {
     beforeEach(() => {
         cy.visit(Cypress.config().baseUrl);
-        // login();
+        login();
     });
-    // eslint-disable-next-line max-lines-per-function
     it('Neues Buch', () => {
         // Given
-        const nachname = 'Mustermann';
-        const email = 'example@mail.com';
-        const homepage = 'https://www.mywebsite.com';
-        const geburtsdatum = '6/1/2022';
-        const geschlecht = 'Weiblich';
-        const kategorie = 5;
-        const familienstand = 'Ledig';
-        const postleitzahl = '68723';
-        const ort = 'Birkenstadt';
-        const umsatz = '4999';
-        const waehrung = 'EUR';
+        const titel = 'Neues Buch Cypress';
+        const rating = 4;
+        const verlag = 'Bar Verlag';
+        const preis = '999';
+        const rabatt = '9';
+        const isbn = '0-6579-1498-3';
 
         // When
         cy.get(createMenuSelektor).click();
         cy.get(createSelektor).within(() => {
-            cy.get('#nachnameInput').type(nachname);
-            cy.get('#emailInput').type(email);
-            cy.get('#homepageInput').type(homepage);
-            cy.get('#geburtsdatumInput').type(geburtsdatum);
-            cy.get(geschlechtCreateSelektor).select(geschlecht);
-            cy.get(kategorieCreateSelektor).select(kategorie);
-            cy.get(familienstandCreateSelektor).select(familienstand);
-            cy.get('#postleitzahlInput').type(postleitzahl);
-            cy.get('#ortInput').type(ort);
-            cy.get('#umsatzInput').type(umsatz);
-            cy.get('#waehrungInput').type(waehrung);
-            cy.get('#sportInput').click();
-            cy.get('#reisenInput').click();
-            cy.get('#lesenInput').click();
-            cy.get('#newsletterInput').click();
+            cy.get('#titelInput').type(titel);
+            cy.get(ratingCreateSelektor).select(rating);
+            cy.get('#kindleInput').click();
+            cy.get(verlagCreateSelektor).select(verlag);
+            cy.get('#preisInput').type(preis);
+            cy.get('#rabattInput').type(rabatt);
+            cy.get('#lieferbarInput').click();
+            cy.get('#typescriptInput').click();
+            cy.get('#isbnInput').type(isbn);
             cy.get('button').click();
         });
 
@@ -90,14 +73,56 @@ describe('Neuanlegen', () => {
         cy.contains(`${homeSelektor} h1`, 'Hello!');
         cy.get(sucheSelektor).click();
         cy.get(suchformularSelektor).within(() => {
-            cy.get('#nachnameInput').type(nachname);
+            cy.get('#titelInput').type(titel);
             cy.get('button').click();
         });
-        cy.get(`${gefundeneKundenSelektor} tr td:nth-child(3)`).each(
+        cy.get(`${gefundeneBuecherSelektor} tr td:nth-child(3)`).each(
             // eslint-disable-next-line arrow-parens
             (elem) => {
-                expect(elem.text()).to.contain(nachname);
+                expect(elem.text()).to.contain(titel);
             },
         );
+    });
+
+    it('Neues Buch mit fehlerhaften Daten', () => {
+        // Given
+        const titel = '?!:';
+
+        // When
+        cy.get(createMenuSelektor).click();
+        cy.get(createSelektor).within(() => {
+            cy.get('#titelInput').type(titel);
+            cy.get('hs-create-verlag').click();
+            cy.get('#preisInput').click();
+            cy.get('#rabattInput').click();
+            cy.get('#isbnInput').click();
+
+            cy.get('#lieferbarInput').click();
+        });
+
+        // Then
+        cy.get(createSelektor).within(() => {
+            cy.get(
+                'hs-create-titel div[class="invalid-feedback ng-star-inserted"] span',
+            ).contains(
+                'Ein Buchtitel muss mit einem Buchstaben oder einer Ziffer beginnen.',
+            );
+            cy.get(
+                'hs-create-verlag div[class="invalid-feedback ng-star-inserted"] span',
+            ).contains('Ein Verlag ist erforderlich.');
+            cy.get(
+                'hs-create-preis div[class="invalid-feedback ng-star-inserted"] span',
+            ).contains('Ein Preis muss eingegeben werden, z.B. 123.45.');
+            cy.get(
+                'hs-create-rabatt div[class="invalid-feedback ng-star-inserted"] span',
+            ).contains(
+                'Ein Rabatt muss in Prozent eingegeben werden, z.B. 5.67.',
+            );
+            cy.get(
+                'hs-create-isbn div[class="invalid-feedback ng-star-inserted"] span',
+            ).contains(
+                'ISBN-Nummer, z.B. 3-89722-583-2, muss eingegeben werden.',
+            );
+        });
     });
 });
