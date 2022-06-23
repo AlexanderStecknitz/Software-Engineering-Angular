@@ -21,25 +21,25 @@ import { login } from './login';
 
 // CSS-Selektoren in der Navigationsleiste, vgl.: XPath
 const navSelektor = 'hs-root hs-header hs-nav';
-const suchePath = '/buecher/suche';
+const suchePath = '/kunde/suche';
 const sucheSelektor = `${navSelektor} ul li a[routerLink="${suchePath}"]`;
 
 // CSS-Selektoren in <main>
 const mainSelektor = 'hs-root hs-main';
-const suchformularSelektor = `${mainSelektor} hs-suche-buecher hs-suchformular`;
-const gefundeneBuecherSelektor = `${mainSelektor} hs-suchergebnis hs-gefundene-buecher`;
-const detailsSelektor = `${mainSelektor} hs-details-buch`;
+const suchformularSelektor = `${mainSelektor} hs-suche-kunden hs-suchformular`;
+const gefundeneKundenSelektor = `${mainSelektor} hs-suchergebnis hs-gefundene-kunden`;
+const detailsSelektor = `${mainSelektor} hs-details-kunde`;
 const bearbeitenSelektor = `${detailsSelektor} hs-details-bearbeiten`;
 
-const updateFormSelektor = `${mainSelektor} hs-update-buch form`;
-const updateTitelSelektor = '#titelUpdate';
-const updateArtSelektor = 'hs-update-art select';
-const updateVerlagSelektor = 'hs-update-verlag select';
+const updateFormSelektor = `${mainSelektor} hs-update-kunde form`;
+const updateNachnameSelektor = '#nachnameUpdate';
+const updateFamilienstandSelektor = 'hs-update-familienstand select';
+const updateGeschlechtSelektor = 'hs-update-geschlecht select';
 
-const detailsTitelSelektor = 'hs-details-titel div div';
-const detailsArtSelektor = 'hs-details-art div div span span';
-const detailsVerlagSelektor = 'hs-details-verlag div div span span';
-
+const detailsNachnameSelektor = 'hs-details-nachname div div';
+const detailsGeschlechtSelektor = 'hs-details-geschlecht div div span span';
+const detailsFamilienstandSelektor =
+    'hs-details-familienstand div div span span';
 /* global Cypress, cy, describe, it, beforeEach */
 
 describe('Aendern', () => {
@@ -49,49 +49,56 @@ describe('Aendern', () => {
         login();
     });
 
-    it('Aendern des Buchs mit ID "00000000-0000-0000-0000-000000000002"', () => {
+    it('Aendern des Kunde mit ID "00000000-0000-0000-0000-000000000002"', () => {
         // Given
-        const titel = 'a';
-        const buchId = '00000000-0000-0000-0000-000000000002';
-        const neuerTitel = 'Beta Cypress';
-        const neueArt = 'Druckausgabe';
-        const neuerVerlag = 'Foo Verlag';
+        const nachname = 'James';
+        const kundeId = '00000000-0000-0000-0000-000000000002';
+        const neuerNachname = 'Curry';
+        const neuerFamilienstand = 'Ledig';
+        const neuesGeschlecht = 'Divers';
 
         cy.get(sucheSelektor).click();
         cy.get(suchformularSelektor).within(() => {
-            cy.get('#titelInput').type(titel);
+            cy.get('#nachnamelInput').type(nachname);
             cy.get('button').click();
         });
-        cy.get(`${gefundeneBuecherSelektor} tr td:nth-child(2)`)
-            .contains(buchId)
+        cy.get(`${gefundeneKundenSelektor} tr td:nth-child(2)`)
+            .contains(kundeId)
             .click();
 
         // When
         cy.get(bearbeitenSelektor).contains('span', 'Bearbeiten').click();
         cy.get(updateFormSelektor).within(() => {
-            cy.get(updateTitelSelektor).clear();
-            cy.get(updateTitelSelektor).type(neuerTitel);
+            cy.get(updateNachnameSelektor).clear();
+            cy.get(updateNachnameSelektor).type(neuerNachname);
 
-            cy.get(updateArtSelektor).select(neueArt);
-            cy.get(updateVerlagSelektor).select(neuerVerlag);
+            cy.get(updateNachnameSelektor).select(neuerNachname);
+            cy.get(updateGeschlechtSelektor).select(neuesGeschlecht);
+            cy.get(updateFamilienstandSelektor).select(neuerFamilienstand);
             cy.get('button').click();
         });
 
         // Then
         cy.get(sucheSelektor).click();
         cy.get(suchformularSelektor).within(() => {
-            cy.get('#titelInput').type(titel);
+            cy.get('#nachnameInput').type(nachname);
             cy.get('button').click();
         });
-        cy.get(`${gefundeneBuecherSelektor} tr td:nth-child(2)`)
-            .contains(buchId)
+        cy.get(`${gefundeneKundenSelektor} tr td:nth-child(2)`)
+            .contains(kundeId)
             .click();
         cy.get(detailsSelektor).within(() => {
-            cy.get(detailsTitelSelektor).should('have.text', neuerTitel);
-            cy.get(detailsArtSelektor).should('have.text', neueArt);
-            cy.get(detailsVerlagSelektor).should('have.text', neuerVerlag);
+            cy.get(detailsNachnameSelektor).should('have.text', neuerNachname);
+            cy.get(detailsGeschlechtSelektor).should(
+                'have.text',
+                neuesGeschlecht,
+            );
+            cy.get(detailsFamilienstandSelektor).should(
+                'have.text',
+                neuerFamilienstand,
+            );
         });
 
-        cy.log(`Aendern von ${buchId}: erfolgreich`);
+        cy.log(`Aendern von ${kundeId}: erfolgreich`);
     });
 });
