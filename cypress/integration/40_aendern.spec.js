@@ -17,16 +17,14 @@
 // eslint-disable-next-line spaced-comment
 /// <reference types="cypress" />
 
-import { login } from './login';
-
 // CSS-Selektoren in der Navigationsleiste, vgl.: XPath
 const navSelektor = 'hs-root hs-header hs-nav';
-const suchePath = '/kunde/suche';
-const sucheSelektor = `${navSelektor} ul li a[routerLink="${suchePath}"]`;
+const suchePath = 'kunde/suche';
+const sucheSelektor = `${navSelektor} div button[routerLink="${suchePath}"]`;
 
 // CSS-Selektoren in <main>
 const mainSelektor = 'hs-root hs-main';
-const suchformularSelektor = `${mainSelektor} hs-suche-kunden hs-suchformular`;
+const suchformularSelektor = `${mainSelektor} hs-suche-kunde hs-suchformular`;
 const gefundeneKundenSelektor = `${mainSelektor} hs-suchergebnis hs-gefundene-kunden`;
 const detailsSelektor = `${mainSelektor} hs-details-kunde`;
 const bearbeitenSelektor = `${detailsSelektor} hs-details-bearbeiten`;
@@ -46,7 +44,6 @@ describe('Aendern', () => {
     beforeEach(() => {
         // Seite aufrufen: siehe cypress.json
         cy.visit(Cypress.config().baseUrl);
-        login();
     });
 
     it('Aendern des Kunde mit ID "00000000-0000-0000-0000-000000000002"', () => {
@@ -59,10 +56,10 @@ describe('Aendern', () => {
 
         cy.get(sucheSelektor).click();
         cy.get(suchformularSelektor).within(() => {
-            cy.get('#nachnamelInput').type(nachname);
+            cy.get('#nachnameInput').type(nachname);
             cy.get('button').click();
         });
-        cy.get(`${gefundeneKundenSelektor} tr td:nth-child(2)`)
+        cy.get(`${gefundeneKundenSelektor} div mat-card`)
             .contains(kundeId)
             .click();
 
