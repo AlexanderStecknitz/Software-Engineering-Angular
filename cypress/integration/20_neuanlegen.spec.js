@@ -17,30 +17,29 @@
 // eslint-disable-next-line spaced-comment
 /// <reference types="cypress" />
 
-import { login } from './login';
+// import { login } from './login';
 
 // CSS-Selektoren in der Navigationsleiste
 const navSelektor = 'hs-root hs-header hs-nav';
-const createPath = '/kunde/create';
-const createMenuSelektor = `${navSelektor} ul li a[routerLink="${createPath}"]`;
-const suchePath = '/kunde/suche';
-const sucheSelektor = `${navSelektor} ul li a[routerLink="${suchePath}"]`;
+const createPath = 'kunde/create';
+const createMenuSelektor = `${navSelektor} div button[routerLink="${createPath}"]`;
+const suchePath = 'kunde/suche';
+const sucheSelektor = `${navSelektor} div button[routerLink="${suchePath}"]`;
 
 // CSS-Selektoren in <main>
 const mainSelektor = 'hs-root hs-main';
-const homeSelektor = `${mainSelektor} hs-home`;
+const suchformularSelektor = `${mainSelektor} hs-suche-kunde hs-suchformular`;
+const suchergebnisSelektor = `${mainSelektor} hs-suchergebnis`;
+const gefundeneKundenSelektor = `${suchergebnisSelektor} hs-gefundene-kunden`;
+
+// const homeSelektor = `${mainSelektor} hs-home`;
 
 const createSelektor = `${mainSelektor} hs-create-kunde`;
-const kategorieCreateSelektor = 'hs-create-kategorie select';
-const geschlechtCreateSelektor = 'hs-create-geschlecht select';
-const familienstandCreateSelektor = 'hs-create-familienstand select';
+
 /*
 const ratingCreateSelektor = 'hs-create-rating select';
 const verlagCreateSelektor = 'hs-create-verlag select';
 */
-
-const suchformularSelektor = `${mainSelektor} hs-suche-kunde hs-suchformular`;
-const gefundeneKundenSelektor = `${mainSelektor} hs-suchergebnis hs-gefundene-kunden`;
 
 /* global Cypress, cy, describe, it, beforeEach, expect */
 
@@ -57,12 +56,9 @@ describe('Neuanlegen', () => {
         const email = 'example@mail.com';
         const homepage = 'https://www.mywebsite.com';
         const geburtsdatum = '6/1/2022';
-        const geschlecht = 'Weiblich';
-        const kategorie = 5;
-        const familienstand = 'Ledig';
         const postleitzahl = '68723';
         const ort = 'Birkenstadt';
-        const umsatz = '4999';
+        const betrag = '4999';
         const waehrung = 'EUR';
 
         // When
@@ -72,32 +68,37 @@ describe('Neuanlegen', () => {
             cy.get('#emailInput').type(email);
             cy.get('#homepageInput').type(homepage);
             cy.get('#geburtsdatumInput').type(geburtsdatum);
-            cy.get(geschlechtCreateSelektor).select(geschlecht);
-            cy.get(kategorieCreateSelektor).select(kategorie);
-            cy.get(familienstandCreateSelektor).select(familienstand);
             cy.get('#postleitzahlInput').type(postleitzahl);
             cy.get('#ortInput').type(ort);
-            cy.get('#umsatzInput').type(umsatz);
+            cy.get('#betragInput').type(betrag);
             cy.get('#waehrungInput').type(waehrung);
             cy.get('#sportInput').click();
             cy.get('#reisenInput').click();
             cy.get('#lesenInput').click();
             cy.get('#newsletterInput').click();
-            cy.get('button').click();
+            cy.get('#buttonCreate').click();
         });
+    });
 
-        // Then
-        cy.contains(`${homeSelektor} h1`, 'Hello!');
+    it('Suchen mit Nachname "Mustermann"', () => {
+        // Given
+        const nachname = 'Mustermann';
+
+        // When
         cy.get(sucheSelektor).click();
         cy.get(suchformularSelektor).within(() => {
             cy.get('#nachnameInput').type(nachname);
             cy.get('button').click();
         });
-        cy.get(`${gefundeneKundenSelektor} tr td:nth-child(3)`).each(
+
+        // Then
+        // eslint-disable-next-line prettier/prettier
+        cy.get(`${gefundeneKundenSelektor} div mat-card`, { timeout: 200_000 }).each(
             // eslint-disable-next-line arrow-parens
             (elem) => {
                 expect(elem.text()).to.contain(nachname);
             },
         );
+        cy.log('Kundenerstellung erfolgreich');
     });
 });
