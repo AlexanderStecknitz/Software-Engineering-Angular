@@ -17,7 +17,6 @@
 
 import { Component, Input, type OnInit } from '@angular/core';
 import { FormControl, type FormGroup } from '@angular/forms';
-import type { MatCheckboxChange } from '@angular/material/checkbox';
 import log from 'loglevel';
 
 /**

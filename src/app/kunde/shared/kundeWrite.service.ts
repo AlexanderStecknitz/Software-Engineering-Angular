@@ -28,10 +28,8 @@ import { type Observable, of } from 'rxjs';
 import { RemoveError, SaveError, UpdateError } from './errors';
 import { catchError, first, map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { Temporal } from '@js-temporal/polyfill';
 import log from 'loglevel';
 import { paths } from '../../shared';
-import { toKundeServer } from './kundeServer';
 
 // Methoden der Klasse HttpClient
 //  * get(url, options) – HTTP GET request

@@ -16,7 +16,7 @@
  */
 
 import { Component, Input, type OnInit } from '@angular/core';
-import { FormControl, type FormGroup, Validators } from '@angular/forms';
+import { FormControl, type FormGroup } from '@angular/forms';
 import log from 'loglevel';
 
 /**
