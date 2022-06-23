@@ -46,7 +46,7 @@ describe('Neuanlegen', () => {
         cy.visit(Cypress.config().baseUrl);
         // login();
     });
-    it('Neues Buch', () => {
+    it('Neuer Kunde', () => {
         // Given
         const nachname = 'Mustermann';
         const email = 'example@mail.com';
