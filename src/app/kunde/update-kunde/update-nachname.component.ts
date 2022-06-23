@@ -46,7 +46,6 @@ export class UpdateNachnameComponent implements OnInit {
         );
         // siehe formControlName innerhalb @Component({templateUrl: ...})
         this.nachname = new FormControl(this.currentValue, [
-            Validators.required,
             Validators.minLength(UpdateNachnameComponent.MIN_LENGTH),
             Validators.pattern(/^\w/u),
         ]);
