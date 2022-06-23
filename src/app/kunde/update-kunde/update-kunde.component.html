@@ -1,10 +1,10 @@
-<form id="formUpdateId" [formGroup]="updateForm" role="form" (submit)="onSubmit()">
-  <div class="updateRoot">
-    <hs-update-nachname [updateForm]="updateForm"></hs-update-nachname>
-    <hs-update-geschlecht [updateForm]="updateForm"> </hs-update-geschlecht>
-    <hs-update-familienstand
-      [updateForm]="updateForm"
-    ></hs-update-familienstand>
-    <button mat-raised-button color="primary" type="submit">Update</button>
-  </div>
-</form>
+<div class="updateRoot">
+  <form [formGroup]="updateForm" role="form" (submit)="onSubmit()">
+      <hs-update-nachname [updateForm]="updateForm"></hs-update-nachname>
+      <hs-update-geschlecht [updateForm]="updateForm"> </hs-update-geschlecht>
+      <hs-update-familienstand
+        [updateForm]="updateForm"
+      ></hs-update-familienstand>
+      <button mat-raised-button color="primary" type="submit">Update</button>
+  </form>
+</div>
