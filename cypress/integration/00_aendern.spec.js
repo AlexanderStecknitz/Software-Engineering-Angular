@@ -1,6 +1,5 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-undef */
-/* eslint-disable max-lines-per-function */
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable object-curly-newline */
 /*
  * Copyright (C) 2021 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
@@ -52,7 +51,9 @@ describe('Aendern', () => {
             cy.get('button').click();
         });
 
-        cy.get(`${gefundeneKundenSelektor} div mat-card`).within(() => {
+        cy.get(`${gefundeneKundenSelektor} div mat-card`, {
+            timeout: 200_000,
+        }).within(() => {
             cy.get('button').click();
         });
 
