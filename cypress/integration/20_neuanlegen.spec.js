@@ -17,8 +17,6 @@
 // eslint-disable-next-line spaced-comment
 /// <reference types="cypress" />
 
-// import { login } from './login';
-
 // CSS-Selektoren in der Navigationsleiste
 const navSelektor = 'hs-root hs-header hs-nav';
 const createPath = 'kunde/create';
@@ -43,13 +41,11 @@ const verlagCreateSelektor = 'hs-create-verlag select';
 
 /* global Cypress, cy, describe, it, beforeEach, expect */
 
-// eslint-disable-next-line max-lines-per-function
 describe('Neuanlegen', () => {
     beforeEach(() => {
         cy.visit(Cypress.config().baseUrl);
         // login();
     });
-    // eslint-disable-next-line max-lines-per-function
     it('Neues Buch', () => {
         // Given
         const nachname = 'Mustermann';
@@ -93,7 +89,7 @@ describe('Neuanlegen', () => {
 
         // Then
         // eslint-disable-next-line prettier/prettier
-        cy.get(`${gefundeneKundenSelektor} div mat-card`, { timeout: 200_000 }).each(
+        cy.get(`${gefundeneKundenSelektor} div mat-card`, { timeout: 300_000 }).each(
             // eslint-disable-next-line arrow-parens
             (elem) => {
                 expect(elem.text()).to.contain(nachname);
