@@ -1,3 +1,6 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-undef */
+/* eslint-disable max-lines-per-function */
 /*
  * Copyright (C) 2021 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
@@ -25,7 +28,8 @@ const sucheSelektor = `${navSelektor} div button[routerLink="${suchePath}"]`;
 // CSS-Selektoren in <main>
 const mainSelektor = 'hs-root hs-main';
 const suchformularSelektor = `${mainSelektor} hs-suche-kunde hs-suchformular`;
-const gefundeneKundenSelektor = `${mainSelektor} hs-suchergebnis hs-gefundene-kunden`;
+const suchergebnisSelektor = `${mainSelektor} hs-suchergebnis`;
+const gefundeneKundenSelektor = `${suchergebnisSelektor} hs-gefundene-kunden`;
 const detailsSelektor = `${mainSelektor} hs-details-kunde`;
 const bearbeitenSelektor = `${detailsSelektor} hs-details-bearbeiten`;
 
@@ -46,11 +50,11 @@ describe('Aendern', () => {
         cy.visit(Cypress.config().baseUrl);
     });
 
-    it('Aendern des Kunde mit ID "00000000-0000-0000-0000-000000000002"', () => {
+    it('Aendern des Kunde mit ID "00000000-0000-0000-0000-000000000040"', () => {
         // Given
-        const nachname = 'James';
-        const kundeId = '00000000-0000-0000-0000-000000000002';
-        const neuerNachname = 'Curry';
+        const nachname = 'Delta';
+        const kundeId = '00000000-0000-0000-0000-000000000040';
+        const neuerNachname = 'DeltaNew';
         const neuerFamilienstand = 'Ledig';
         const neuesGeschlecht = 'Divers';
 
@@ -59,11 +63,17 @@ describe('Aendern', () => {
             cy.get('#nachnameInput').type(nachname);
             cy.get('button').click();
         });
-        cy.get(`${gefundeneKundenSelektor} div mat-card`)
-            .contains(kundeId)
+
+        cy.get(`${gefundeneKundenSelektor} div mat-card mat-card-content table `)
+            .eq(0).eq(0)
+            .contains(nachname)
+            .parent().parent()
+            // eslint-disable-next-line @typescript-eslint/no-magic-numbers
+            .eq(4).eq(1).eq(0)
             .click();
 
         // When
+        // Todo Implement proper search.
         cy.get(bearbeitenSelektor).contains('span', 'Bearbeiten').click();
         cy.get(updateFormSelektor).within(() => {
             cy.get(updateNachnameSelektor).clear();
@@ -78,23 +88,18 @@ describe('Aendern', () => {
         // Then
         cy.get(sucheSelektor).click();
         cy.get(suchformularSelektor).within(() => {
-            cy.get('#nachnameInput').type(nachname);
+            cy.get('#nachnameInput').type(neuerNachname);
             cy.get('button').click();
         });
-        cy.get(`${gefundeneKundenSelektor} tr td:nth-child(2)`)
-            .contains(kundeId)
-            .click();
-        cy.get(detailsSelektor).within(() => {
-            cy.get(detailsNachnameSelektor).should('have.text', neuerNachname);
-            cy.get(detailsGeschlechtSelektor).should(
-                'have.text',
-                neuesGeschlecht,
-            );
-            cy.get(detailsFamilienstandSelektor).should(
-                'have.text',
-                neuerFamilienstand,
-            );
-        });
+
+        cy.get(`${gefundeneKundenSelektor} div mat-card`, { timeout: 200_000 }).each(
+            // eslint-disable-next-line arrow-parens
+            (elem) => {
+                expect(elem.text()).to.contain(neuerNachname);
+                expect(elem.text()).to.contain(neuesGeschlecht);
+                expect(elem.text()).to.contain(neuerFamilienstand);
+            },
+        );
 
         cy.log(`Aendern von ${kundeId}: erfolgreich`);
     });
