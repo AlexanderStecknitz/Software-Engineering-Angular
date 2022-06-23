@@ -33,6 +33,7 @@ const gefundeneKundenSelektor = `${suchergebnisSelektor} hs-gefundene-kunden`;
 const detailsSelektor = `${mainSelektor} hs-details-kunde`;
 const bearbeitenSelektor = `${detailsSelektor} hs-details-bearbeiten`;
 
+const updateSelektor = `${mainSelektor} hs-update-kunde`;
 const updateFormSelektor = `${mainSelektor} hs-update-kunde form`;
 const updateNachnameSelektor = '#nachnameUpdate';
 const updateFamilienstandSelektor = 'hs-update-familienstand select';
@@ -64,25 +65,15 @@ describe('Aendern', () => {
             cy.get('button').click();
         });
 
-        cy.get(`${gefundeneKundenSelektor} div mat-card mat-card-content table `)
-            .eq(0).eq(0)
-            .contains(nachname)
-            .parent().parent()
-            // eslint-disable-next-line @typescript-eslint/no-magic-numbers
-            .eq(4).eq(1).eq(0)
-            .click();
+        cy.get(`${gefundeneKundenSelektor} div mat-card mat-card-content table `).within(() => {
+            cy.get('button').click();
+            });
 
         // When
         // Todo Implement proper search.
-        cy.get(bearbeitenSelektor).contains('span', 'Bearbeiten').click();
-        cy.get(updateFormSelektor).within(() => {
-            cy.get(updateNachnameSelektor).clear();
-            cy.get(updateNachnameSelektor).type(neuerNachname);
-
-            cy.get(updateNachnameSelektor).select(neuerNachname);
-            cy.get(updateGeschlechtSelektor).select(neuesGeschlecht);
-            cy.get(updateFamilienstandSelektor).select(neuerFamilienstand);
-            cy.get('button').click();
+        cy.get(`${updateSelektor}`).within(() => {
+            cy.get('#nachnameInput').type(neuerNachname);
+            cy.get('#formUpdateId').submit();
         });
 
         // Then
@@ -96,8 +87,6 @@ describe('Aendern', () => {
             // eslint-disable-next-line arrow-parens
             (elem) => {
                 expect(elem.text()).to.contain(neuerNachname);
-                expect(elem.text()).to.contain(neuesGeschlecht);
-                expect(elem.text()).to.contain(neuerFamilienstand);
             },
         );
 
